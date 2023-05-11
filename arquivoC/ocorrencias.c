@@ -36,7 +36,7 @@ void Imprimir_Ocorrencia(LOcorrencias* pLista){
 	POcorrencia pAux;
 	//Começa apontando para a primeira celula após a celula cabeça
     pAux = pLista->pPrimeiro->pProx;
-    printf("Linhas: ");
+    printf("Ocorrencias: ");
 	
     while(pAux != NULL) {
 		
