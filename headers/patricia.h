@@ -18,3 +18,7 @@ typedef struct TipoPatNo{
         // TAD a.h
     }NO;
 }TipoPatNo;
+
+void InsercaoPat(char* palavra, TipoArvore* t); // função de inserção
+TipoArvore CriaNoExt(char* palavra); // inserção auxiliar folha
+
