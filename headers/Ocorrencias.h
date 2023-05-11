@@ -19,4 +19,4 @@ typedef struct {
 void FLOcorrencias_Vazia(LOcorrencias* pLista);
 void Insere_Ocorrencia(LOcorrencias* pLista, int IdDOc);
 void Imprimir_Ocorrencia(LOcorrencias* pLista);
-int Verifica_Ocorrencia(LOcorrencias* pLista, int IdDoc);
+POcorrencia Verifica_Ocorrencia(LOcorrencias* pLista, int IdDoc);
