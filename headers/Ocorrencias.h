@@ -3,9 +3,8 @@
 typedef struct Ocorrencia* POcorrencia;
 typedef struct Ocorrencia { 
     
-    char documento[50];
-    int posicao;
-    int ocorrencias;
+    int IdDOc;
+    int qtde;
     POcorrencia pProx;
 
 }TipoOcorrencia;
@@ -18,6 +17,6 @@ typedef struct {
 }LOcorrencias;
 
 void FLOcorrencias_Vazia(LOcorrencias* pLista);
-void Insere_Ocorrencia(LOcorrencias* pLista, int posicao);
+void Insere_Ocorrencia(LOcorrencias* pLista, int IdDOc);
 void Imprimir_Ocorrencia(LOcorrencias* pLista);
-int Verifica_Ocorrencia(LOcorrencias* pLista, int posicao);
+int Verifica_Ocorrencia(LOcorrencias* pLista, int IdDoc);

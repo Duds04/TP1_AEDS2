@@ -1,4 +1,4 @@
-#include "a.h"
+#include "palavra.h""
 
 typedef enum{
     Interno, Externo
@@ -14,8 +14,7 @@ typedef struct TipoPatNo{
             TipoArvore Esq, Dir;
         }NoInterno;
 
-        char palavra[50];
-        // TAD a.h
+        TPalavra tpalavra;
     }NO;
 }TipoPatNo;
 
