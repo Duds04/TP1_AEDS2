@@ -14,3 +14,4 @@
 #define pausar_tela() printf("\nPress any key to continue..."); limpar_input(); getchar();
 #endif
 
+typedef 
