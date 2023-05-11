@@ -1,4 +1,4 @@
-#include "palavra.h""
+#include "palavra.h"
 
 typedef enum{
     Interno, Externo
