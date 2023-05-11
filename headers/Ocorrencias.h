@@ -21,5 +21,3 @@ void FLOcorrencias_Vazia(LOcorrencias* pLista);
 void Insere_Ocorrencia(LOcorrencias* pLista, int posicao);
 void Imprimir_Ocorrencia(LOcorrencias* pLista);
 int Verifica_Ocorrencia(LOcorrencias* pLista, int posicao);
-
-                                                                
