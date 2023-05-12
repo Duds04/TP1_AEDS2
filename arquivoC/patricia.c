@@ -41,7 +41,7 @@ void Pesquisa (char k[50], TipoArvore t){
     if(EExterno(t)){
         if(!(strcmp(k, t->NO.tpalavra.Palavra))){
         printf("Elemento encontrado\n");
-        printf("%s, %d\n", t->NO.tpalavra.Palavra, t->NO.tpalavra.ocorrencias.pPrimeiro);
+        Imprime_TPalavra(&(t->NO.tpalavra));
         }
         else{
             printf("Elemento não encontrado\n");
@@ -109,7 +109,7 @@ TipoArvore Insere(char k[50], TipoArvore* t, int IdDoc){
 
 void MostraArvore(TipoArvore t){
     if(EExterno(t)){
-        printf("%s, %d\n", t->NO.tpalavra.Palavra, t->NO.tpalavra.ocorrencias.pPrimeiro);
+        Imprime_TPalavra(&(t->NO.tpalavra));
         return;
     }
     MostraArvore(t->NO.NoInterno.Esq);
