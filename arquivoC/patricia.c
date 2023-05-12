@@ -114,4 +114,5 @@ void MostraArvore(TipoArvore t){
     }
     MostraArvore(t->NO.NoInterno.Esq);
     MostraArvore(t->NO.NoInterno.Dir);
+    return;
 }
