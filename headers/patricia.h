@@ -19,11 +19,11 @@ typedef struct TipoPatNo{
     }NO;
 }TipoPatNo;
 
-TipoDib Bit(TipoIndexAmp i, TPalavra k);
+TipoDib Bit(TipoIndexAmp i, char k[50]);
 TipoArvore CriaNoInt(int i, TipoArvore* Esq, TipoArvore* Dir, char letra);
-TipoArvore CriaNoExt(TPalavra k, int IdDoc);
-void Pesquisa (TPalavra k, TipoArvore t);
-TipoArvore InsereEntre(TPalavra k, TipoArvore* t, int i, int IdDoc);
-TipoArvore Insere(TPalavra k, TipoArvore* t, int IdDoc);
+TipoArvore CriaNoExt(char k[50], int IdDoc);
+void Pesquisa (char k[50], TipoArvore t);
+TipoArvore InsereEntre(char k[50], TipoArvore* t, int i, int IdDoc);
+TipoArvore Insere(char k[50], TipoArvore* t, int IdDoc);
 short EExterno (TipoArvore p);
 void MostraArvore(TipoArvore t);

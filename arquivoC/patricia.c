@@ -1,8 +1,8 @@
 #include "../headers/patricia.h"
 
-TipoDib Bit(TipoIndexAmp i, TPalavra k){
+TipoDib Bit(TipoIndexAmp i, char k[50]){
 // Retorna o i-ésimo bit da chave k a partir da esquerda
-    return k.Palavra[i];
+    return k[i];
 }
 short EExterno (TipoArvore p){
     // verifica se p é nó externo
@@ -23,23 +23,23 @@ TipoArvore CriaNoInt(int i, TipoArvore* Esq, TipoArvore* Dir, char letra){
     return p;
 }
 
-TipoArvore CriaNoExt(TPalavra k, int IdDoc){
+TipoArvore CriaNoExt(char k[50], int IdDoc){
     TipoArvore p;
-
+    TPalavra palavra;
+    Inicializa_Palavra(&palavra);
+    Preenche_Palavra(&palavra, k);
     p = (TipoArvore)malloc(sizeof(TipoPatNo));
 
     p->nt = Externo;
-    strcpy(p->NO.tpalavra.Palavra, k.Palavra);
-    FLOcorrencias_Vazia(&(p->NO.tpalavra.ocorrencias));
-    Insere_Ocorrencia(&(p->NO.tpalavra.ocorrencias), IdDoc);
+    p->NO.tpalavra = palavra;
 
     return p;
 
 }
 
-void Pesquisa (TPalavra k, TipoArvore t){
+void Pesquisa (char k[50], TipoArvore t){
     if(EExterno(t)){
-        if(!(strcmp(k.Palavra, t->NO.tpalavra.Palavra))){
+        if(!(strcmp(k, t->NO.tpalavra.Palavra))){
         printf("Elemento encontrado\n");
         printf("%s, %d\n", t->NO.tpalavra.Palavra, t->NO.tpalavra.ocorrencias.pPrimeiro);
         }
@@ -55,7 +55,7 @@ void Pesquisa (TPalavra k, TipoArvore t){
     }
 }
 
-TipoArvore InsereEntre(TPalavra k, TipoArvore* t, int i, int IdDoc){
+TipoArvore InsereEntre(char k[50], TipoArvore* t, int i, int IdDoc){
     TipoArvore p;
     if (EExterno(*t) || i < (*t)->NO.NoInterno.Index){
         //Cria novo nó externo
@@ -75,7 +75,7 @@ TipoArvore InsereEntre(TPalavra k, TipoArvore* t, int i, int IdDoc){
     }
 }
 
-TipoArvore Insere(TPalavra k, TipoArvore* t, int IdDoc){
+TipoArvore Insere(char k[50], TipoArvore* t, int IdDoc){
     TipoArvore p;
     int i;
     if(*t == NULL){
@@ -93,12 +93,12 @@ TipoArvore Insere(TPalavra k, TipoArvore* t, int IdDoc){
         }
         // Encontra o primeiro bit diferente
         i = 0;
-        while ((i<strlen(k.Palavra))& (Bit((int)i, k) == Bit((int)i, p->NO.tpalavra))){
+        while ((i<strlen(k))& (Bit((int)i, k) == Bit((int)i, p->NO.tpalavra.Palavra))){
             i++;
         }
-        if (!(strcmp(k.Palavra, p->NO.tpalavra.Palavra))){
+        if (!(strcmp(k, p->NO.tpalavra.Palavra))){
             // se tiver palavra, então adicionar ocorrencia
-            Insere_Ocorrencia(&(p->NO.tpalavra.ocorrencias), IdDoc);
+            Insere_Ocorrencia_Palavra(&(p->NO.tpalavra), IdDoc);
             return *t;
         }
         else{
