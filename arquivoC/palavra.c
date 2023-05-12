@@ -1,4 +1,4 @@
-#include"../headers/palavra.h"
+#include "../headers/palavra.h"
 
 
 void Inicializa_Palavra(TPalavra* pPalavra){
