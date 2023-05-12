@@ -41,7 +41,7 @@ void Imprimir_Ocorrencia(LOcorrencias* pLista){
     while(pAux != NULL) {
 		
 		//Imprime cada posição e avança para a proxima celula até chegar ao final da lista
-        printf("<%d, %d> ", pAux->IdDOc, pAux->qtde);
+        printf("<%d, %d> ", pAux->qtde, pAux->IdDOc );
         pAux = pAux->pProx;
 
     }

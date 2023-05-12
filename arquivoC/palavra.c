@@ -1,6 +1,5 @@
 #include "../headers/palavra.h"
 
-
 void Inicializa_Palavra(TPalavra* pPalavra){
 
 	//inicializa a lista de ocorrencias
@@ -37,7 +36,7 @@ void Imprime_TPalavra(TPalavra* pPalavra){
 	//Imprime a estrutura TPalavra chamando os subprogramas para imprimir cada campo
 
 	Imprime_Palavra(pPalavra);
-	Imprimir_Ocorrencia(&pPalavra->ocorrencias);
+	Imprimir_Ocorrencia(&(pPalavra->ocorrencias));
 
 }
 

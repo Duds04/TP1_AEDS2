@@ -32,7 +32,7 @@ TipoArvore CriaNoExt(char k[50], int IdDoc){
 
     p->nt = Externo;
     p->NO.tpalavra = palavra;
-
+    Insere_Ocorrencia_Palavra(&(p->NO.tpalavra), IdDoc);
     return p;
 
 }
