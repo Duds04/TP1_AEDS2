@@ -1,14 +1,11 @@
-// #include "leitura.h"
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "../headers/leitura.h"
 
 void python(){
-    system("python3 ../entradas/leitura.py");
+    system("python3   ../entradas/leitura.py");
 }
 
 void EntrarArquivos(int quant){
+    python();
     char Arquivo[20];
     char aux[3];
     for (int i = 1; i < (quant+1); i++){
@@ -18,17 +15,11 @@ void EntrarArquivos(int quant){
         strcat(Arquivo, aux);
         strcat(Arquivo, ".txt");
         printf("%s\n", Arquivo);
-        // TratarArquivos(Arquivo);
+
+        TratarArquivos("arquivo1.txt");
     }
     
 }
 
-int main(){
-    // python();
-    int quant;
-    printf("Quantos arquivos vao ser inceridos?\n");
-    scanf("%d", &quant);
-    EntrarArquivos(quant);
-    return 0;
-}
+
 
