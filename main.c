@@ -1,10 +1,13 @@
 #include "./headers/leitura.h"
 
+void Foi(){
+    system("python   entradas/leitura.py");
+}
+
 int main(){
-    // python();
     int quant;
     printf("Quantos arquivos vao ser inceridos?\n");
     scanf("%d", &quant);
-    EntrarArquivos(quant);
+    Foi();
     return 0;
 }
