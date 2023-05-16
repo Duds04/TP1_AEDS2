@@ -55,21 +55,21 @@ void Pesquisa (char k[50], TipoArvore t){
     }
 }
 
-TipoArvore InsereEntre(char k[50], TipoArvore* t, int i, int IdDoc){
+TipoArvore InsereEntre(char k[50], TipoArvore* t, int i, int IdDoc, char LetraDif){
     TipoArvore p;
     if (EExterno(*t) || i < (*t)->NO.NoInterno.Index){
         //Cria novo nó externo
         p = CriaNoExt(k, IdDoc);
-        if(Bit(i, k) > (*t)->NO.NoInterno.letra){
-            return CriaNoInt(i, t, &p, Bit(i, k));
+        if(Bit(i, k) > LetraDif){
+            return CriaNoInt(i, t, &p, LetraDif);
         }else{
             return CriaNoInt(i, &p, t, Bit(i, k));
         }
     }else{
         if(Bit((*t)->NO.NoInterno.Index, k) > (*t)->NO.NoInterno.letra){
-            (*t)->NO.NoInterno.Dir = InsereEntre(k, &(*t)->NO.NoInterno.Dir, i, IdDoc);
+            (*t)->NO.NoInterno.Dir = InsereEntre(k, &(*t)->NO.NoInterno.Dir, i, IdDoc, LetraDif);
         }else{
-            (*t)->NO.NoInterno.Esq = InsereEntre(k, &(*t)->NO.NoInterno.Esq, i, IdDoc);
+            (*t)->NO.NoInterno.Esq = InsereEntre(k, &(*t)->NO.NoInterno.Esq, i, IdDoc, LetraDif);
         }
         return (*t);
     }
@@ -84,8 +84,13 @@ TipoArvore Insere(char k[50], TipoArvore* t, int IdDoc){
     else{
         p = *t;
         while(!EExterno(p)){
-            if(Bit(p->NO.NoInterno.Index, k) > p->NO.NoInterno.letra){
-                p = p->NO.NoInterno.Dir;
+            if(p->NO.NoInterno.Index < strlen(k)){
+                if(Bit(p->NO.NoInterno.Index, k) > p->NO.NoInterno.letra){
+                    p = p->NO.NoInterno.Dir;
+                }
+                else{
+                    p = p->NO.NoInterno.Esq;
+                }
             }
             else{
                 p = p->NO.NoInterno.Esq;
@@ -93,7 +98,7 @@ TipoArvore Insere(char k[50], TipoArvore* t, int IdDoc){
         }
         // Encontra o primeiro bit diferente
         i = 0;
-        while ((i<strlen(k))& (Bit((int)i, k) == Bit((int)i, p->NO.tpalavra.Palavra))){
+        while ((i<=strlen(k))& (Bit((int)i, k) == Bit((int)i, p->NO.tpalavra.Palavra))){
             i++;
         }
         if (!(strcmp(k, p->NO.tpalavra.Palavra))){
@@ -102,17 +107,22 @@ TipoArvore Insere(char k[50], TipoArvore* t, int IdDoc){
             return *t;
         }
         else{
-            return (InsereEntre(k, t, i, IdDoc));
+            return (InsereEntre(k, t, i, IdDoc, p->NO.tpalavra.Palavra[i]));
         }
     }
 }
 
 void MostraArvore(TipoArvore t){
-    if(EExterno(t)){
+    if(t == NULL){
+        return;
+    }
+    else if(EExterno(t)){
         Imprime_TPalavra(&(t->NO.tpalavra));
         return;
     }
+    else{
     MostraArvore(t->NO.NoInterno.Esq);
     MostraArvore(t->NO.NoInterno.Dir);
     return;
+    }
 }
