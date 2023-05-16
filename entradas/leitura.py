@@ -4,7 +4,7 @@ import string
 
 
 def TratarArquivos():
-    txt = open("./entradas/arquivos.txt", "r")
+    txt = open("./entradas/listagemArquivos.txt", "r")
     N = txt.readline()
         
     for i in range(int(N)):
@@ -19,9 +19,10 @@ def TratarArquivos():
 
         Larquivo = Larquivo.translate(dict.fromkeys(map(ord, string.punctuation)))
 
-        arquivo = open("./entradas/foi.txt", "w")
+        arquivo = open(f"./entradas/{Arquivo}", "w")
         arquivo.writelines(Larquivo)
         arquivo.close()
+
     txt.close()
 
 
