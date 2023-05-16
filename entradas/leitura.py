@@ -23,8 +23,6 @@ def TratarArquivos():
         arquivo.writelines(Larquivo)
         arquivo.close()
 
-
-
     txt.close()
 
 

@@ -1,9 +1,8 @@
 {
     "files.associations": {
-        "palavra.h": "c",
-        "patricia.h": "c",
         "leitura.h": "c",
-        "include.h": "c",
-        "*.txt": "code-text-binary"
+        "stdio.h": "c",
+        "unistd.h": "c"
+        "palavra.h": "c"
     }
 }

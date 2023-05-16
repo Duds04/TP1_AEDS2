@@ -1,5 +1,6 @@
 #include "../headers/leitura.h"
 
+
 int leituraArquivo(char *pArquivo, TipoArvore* Pat)
 {
     FILE *arquivo, *arquivoInterno;

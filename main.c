@@ -1,6 +1,7 @@
 #include "./headers/include.h"
 #include "./headers/leitura.h"
-// #include "./headers/patricia.h"
+
+
 
 int main()
 {
