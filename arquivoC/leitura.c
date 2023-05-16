@@ -1,13 +1,12 @@
 #include "../headers/leitura.h"
 
-int leituraArquivo(char *pArquivo)
+int leituraArquivo(char *pArquivo, TipoArvore* Pat)
 {
     FILE *arquivo, *arquivoInterno;
     int idDoc = 0;
     char guardaArquivo[50], guardaPalavra[200]; // vetor auxiliar para guardar palavra
     char c;
     char caminho[70] = "./entradas/";
-    TipoArvore Pat = NULL;
 
     if ((arquivo = fopen(pArquivo, "r")) != NULL)
     {
@@ -21,7 +20,7 @@ int leituraArquivo(char *pArquivo)
                 {
                     while (fscanf(arquivoInterno, "%s", guardaPalavra) != EOF)
                     {
-                        Pat = Insere(guardaPalavra, &Pat, idDoc);
+                        (*Pat) = Insere(guardaPalavra, Pat, idDoc);
                     }
                 }
                 else
@@ -42,6 +41,5 @@ int leituraArquivo(char *pArquivo)
     }
 
     fclose(arquivo);
-    MostraArvore(Pat);
     return 1;
 }

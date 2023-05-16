@@ -9,7 +9,13 @@ int main()
 
     // printf("Digite o nome do arquivo (com sua extensao .txt): \n");
     // scanf(" %s", arquivo);
+    TipoArvore Pat = NULL;
+
+
     strcpy(arquivo, "listagemArquivos.txt");
     strcat(caminho, arquivo);
-    leituraArquivo(caminho);
+    leituraArquivo(caminho, &Pat);
+
+    MostraArvore(Pat);
+
 }
