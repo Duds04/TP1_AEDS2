@@ -3,5 +3,6 @@
         "leitura.h": "c",
         "stdio.h": "c",
         "unistd.h": "c"
+        "palavra.h": "c"
     }
 }

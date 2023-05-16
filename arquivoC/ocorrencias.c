@@ -12,27 +12,36 @@ void FLOcorrencias_Vazia(LOcorrencias* pLista){
 
 void Insere_Ocorrencia(LOcorrencias* pLista, int IdDoc){
 
-	//Aloca espaço para para uma nova celula e preenche o campo posição com o valor recebido como paramatro
+    //Verifica se a palavra ja apareceu antes nesse documento, se sim, incrementa a quantidade de ocorrencias
+
+    if (Verifica_Ocorrencia(pLista, IdDoc) != 0){
+        Verifica_Ocorrencia(pLista, IdDoc)->qtde++;
+        return;
+    }
+
+	//Aloca espaço para para uma nova celula e preenche o campo IdDoc com o valor recebido como paramatro
 
     pLista->pUltimo->pProx = (POcorrencia)malloc(sizeof(TipoOcorrencia));
     pLista->pUltimo = pLista->pUltimo->pProx;
+    pLista->pUltimo->qtde = 1;
     pLista->pUltimo->IdDOc = IdDoc;
     pLista->pUltimo->pProx = NULL;
     
 }
 
-void Imprimir_Posicao(LOcorrencias* pLista){
+//FUNÇÃO NÃO ADAPTADA PARA O TRABALHO
+void Imprimir_Ocorrencia(LOcorrencias* pLista){
 
 	//Apontador para celula utilizado para percorrer a lista de posições
 	POcorrencia pAux;
 	//Começa apontando para a primeira celula após a celula cabeça
     pAux = pLista->pPrimeiro->pProx;
-    printf("Linhas: ");
+    printf("Ocorrencias: ");
 	
     while(pAux != NULL) {
 		
 		//Imprime cada posição e avança para a proxima celula até chegar ao final da lista
-        printf("[%d] ", pAux->posicao);
+        printf("<%d, %d> ", pAux->qtde, pAux->IdDOc );
         pAux = pAux->pProx;
 
     }
@@ -41,7 +50,7 @@ void Imprimir_Posicao(LOcorrencias* pLista){
 
 }
 
-int Verifica_Posicao(LOcorrencias* pLista, int IdDoc){
+POcorrencia Verifica_Ocorrencia(LOcorrencias* pLista, int IdDoc){
 	
 	//Apontador para celula para percorrer a lista
 	POcorrencia pAux;
@@ -53,8 +62,8 @@ int Verifica_Posicao(LOcorrencias* pLista, int IdDoc){
 
 		if (pAux->IdDOc == IdDoc){
 			
-			//retorna 1 caso a palavra ja tenha aparecido nesse documento
-			return 1;
+			//retorna o endereço da celula caso encontre o valor
+			return pAux;
 			
 		}
 		
