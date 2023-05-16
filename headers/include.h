@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <math.h>
 
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #define limpar_input() fflush(stdin)
