@@ -165,21 +165,23 @@ float Busca_textos(TipoArvore t, char termos[50][50], int n_termos, int IDdoc){
     
     int i;
     float peso = 0;
-
+    for(i = 0; i < n_termos; i++){
+        peso = Relevancia
+    }
 
     return peso;
 
 }
 
-//Função que calcula a relevancia de um documento, parametros: arvore, vetor de termos, numero de termos, Id do documento, numero de documentos
-float Relevancia(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc){
+//Função que calcula a relevancia de um documento, parametros: arvore, vetor de termos, numero de termos, Id do documento, numero de documentos, numero de palavras no documento
+float Relevancia(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc){
 
     int i;
     float relevancia = 0;
 
     for(i=0; i<n_termos; i++){
         relevancia += Peso_termo(t, IDdoc, N_Doc);
-        //Relevancia deve receber relevancia*(1/n de termos por documento)
+        relevancia = relevancia * (1/N_Palavras_doc);
     }
 
     return relevancia;
