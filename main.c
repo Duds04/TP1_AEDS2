@@ -1,5 +1,9 @@
-#include "./headers/include.h"
-#include "./headers/patricia.h"
+#include "./headers/leitura.h"
+
+void Python(){
+    system("python   entradas/leitura.py");
+}
+
 
 int main(){
     TipoArvore Pat = NULL;
