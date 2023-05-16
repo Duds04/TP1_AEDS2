@@ -161,12 +161,12 @@ void MostraArvore(TipoArvore t){
 //EM DESENVOLVIMENTO
 
 
-float Busca_textos(TipoArvore t, char termos[50][50], int n_termos, int IDdoc){
+float Busca_textos(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc){
     
     int i;
     float peso = 0;
     for(i = 0; i < n_termos; i++){
-        peso = Relevancia
+        peso = Relevancia(t, termos[i], n_termos, IDdoc, N_Doc, N_Palavras_doc);
     }
 
     return peso;
