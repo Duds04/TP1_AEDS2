@@ -47,3 +47,17 @@ void Insere_Ocorrencia_Palavra(TPalavra* pPalavra, int IdDoc){
     Insere_Ocorrencia(&pPalavra->ocorrencias, IdDoc);
 
 }
+
+int Ocorrencias_Palavra(TPalavra* pPalavra, int IdDoc){
+
+	//Retorna a quantidade de ocorrencias da palavra em um determinado documento
+
+	return Verifica_Ocorrencia(&pPalavra->ocorrencias, IdDoc)->qtde;
+}
+
+int Qtde_Docs_Palavra(TPalavra* pPalavra){
+
+	//Retorna a quantidade de documentos em que a palavra ocorre
+
+	return Tamanho_LOcorrencia(&pPalavra->ocorrencias);
+}
