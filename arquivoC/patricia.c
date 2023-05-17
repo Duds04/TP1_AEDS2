@@ -48,8 +48,9 @@ TipoArvore CriaNoExt(char k[50], int IdDoc){
 void Pesquisa (char k[50], TipoArvore t){
     if(EExterno(t)){
         if(!(strcmp(k, t->NO.tpalavra.Palavra))){
-        printf("Elemento encontrado\n");
-        Imprime_TPalavra(&(t->NO.tpalavra));
+        // printf("Elemento encontrado\n");
+        // Imprime_TPalavra(&(t->NO.tpalavra));
+            return t;
         }
         else{
             printf("Elemento não encontrado\n");
@@ -155,4 +156,45 @@ void MostraArvore(TipoArvore t){
     MostraArvore(t->NO.NoInterno.Dir);
     return;
     }
+}
+
+//EM DESENVOLVIMENTO
+
+
+float Busca_textos(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc){
+    
+    int i;
+    float peso = 0;
+    for(i = 0; i < n_termos; i++){
+        peso = Relevancia(t, termos[i], n_termos, IDdoc, N_Doc, N_Palavras_doc);
+    }
+
+    return peso;
+
+}
+
+//Função que calcula a relevancia de um documento, parametros: arvore, vetor de termos, numero de termos, Id do documento, numero de documentos, numero de palavras no documento
+float Relevancia(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc){
+
+    int i;
+    float relevancia = 0;
+
+    for(i=0; i<n_termos; i++){
+        relevancia += Peso_termo(t, IDdoc, N_Doc);
+        relevancia = relevancia * (1/N_Palavras_doc);
+    }
+
+    return relevancia;
+
+}
+
+//Função que calcula o peso de um termo em um documento, parametros: Nó da arvore que contém o termo, Id do documento, numero de documentos
+float Peso_termo(TipoArvore t, int IDdoc, int N_Doc){
+
+    float peso;
+
+    peso = Ocorrencias_Palavra(&t->NO.tpalavra, IDdoc) * log10(N_Doc/Qtde_Docs_Palavra(&t->NO.tpalavra));
+
+    return peso;
+
 }
