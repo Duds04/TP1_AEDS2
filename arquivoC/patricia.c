@@ -160,7 +160,17 @@ void MostraArvore(TipoArvore t){
 
 //EM DESENVOLVIMENTO
 
+//calcula o numero de palavras por documento
+int Pal_por_Doc(){
 
+    
+
+
+
+}
+
+
+//Função que calcula a relevancia de um documento, parametros: arvore, vetor de termos, numero de termos, Id do documento, numero de documentos, numero de palavras no documento
 float Busca_textos(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc){
     
     int i;

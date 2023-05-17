@@ -27,3 +27,6 @@ TipoArvore InsereEntre(char k[50], TipoArvore* t, int i, int IdDoc, char LetraDi
 TipoArvore Insere(char k[50], TipoArvore* t, int IdDoc);
 short EExterno (TipoArvore p);
 void MostraArvore(TipoArvore t);
+float Busca_textos(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc);
+float Relevancia(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc);
+float Peso_termo(TipoArvore t, int IDdoc, int N_Doc);
