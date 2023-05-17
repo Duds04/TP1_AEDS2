@@ -25,6 +25,8 @@ def TratarArquivos():
         Larquivo = re.sub(r'\s+', " ", Larquivo).lower()
         arquivo.close()
         
+        for i in range(10):
+            Larquivo = (''.join(Larquivo)).replace(f"{i}", "") 
         Larquivo = (Larquivo.translate(dict.fromkeys(map(ord, string.punctuation))))
         
         Larquivo = nltk.sent_tokenize(Larquivo)
@@ -34,7 +36,7 @@ def TratarArquivos():
             newwords = [word for word in words if word not in stop]
             Larquivo[i] = ' '.join(newwords)
             
-        Larquivo = (''.join(Larquivo)).replace(" ", "\n")        
+        Larquivo = (''.join(Larquivo)).replace(" ", "\n")   
             
         arquivo = open(f"./entradas/{Arquivo}", "w")
         arquivo.writelines(Larquivo)
