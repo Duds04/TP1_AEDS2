@@ -107,13 +107,11 @@ rbs
 table
 grow
 much
-86
 dore
 reducing
 time
 spent
 simplification
-1683
 experiments
 three
 sr

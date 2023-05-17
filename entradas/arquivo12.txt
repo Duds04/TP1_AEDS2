@@ -38,7 +38,7 @@ harp
 platform
 uses
 pci
-8gbs
+gbs
 bandwidth
 decreased
 memory
@@ -67,6 +67,5 @@ algorithms
 results
 show
 speedup
-145
 execution
 time

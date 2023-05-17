@@ -87,12 +87,10 @@ effectiveness
 approach
 use
 series
-iscas’85
+iscas
 benchmarks
 results
 show
 area
 reduction
 varying
-20
-60

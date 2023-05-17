@@ -43,7 +43,7 @@ intel
 currently
 order
 use
-harp’s
+harp
 fpga
 developer
 must
@@ -75,7 +75,7 @@ work
 presented
 abstract
 layer
-harp’s
+harp
 fpga
 allows
 fpga

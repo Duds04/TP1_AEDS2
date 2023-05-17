@@ -45,7 +45,6 @@ combination
 two
 wellknown
 problems
-01
 knapsack
 problem
 kp
@@ -113,4 +112,3 @@ ttp
 instances
 number
 cities
-51

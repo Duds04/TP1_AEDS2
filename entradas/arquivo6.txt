@@ -1,7 +1,6 @@
 analyzing
 impact
 bots
-2018
 brazilian
 presidential
 election
@@ -65,7 +64,6 @@ bolsonaro
 brazilian
 presidential
 election
-2018
 additionally
 possible
 voters
@@ -82,14 +80,11 @@ collected
 data
 set
 approximately
-7144
 considered
 undecided
-1767
 potential
 bolsonaro
 voters
-1089
 potential
 haddad
 voters

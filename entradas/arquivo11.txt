@@ -115,7 +115,7 @@ results
 presented
 standard
 ieee
-30bus
+bus
 system
 obtained
 results
