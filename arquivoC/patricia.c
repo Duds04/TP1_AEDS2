@@ -48,9 +48,9 @@ TipoArvore CriaNoExt(char k[50], int IdDoc){
 void Pesquisa (char k[50], TipoArvore t){
     if(EExterno(t)){
         if(!(strcmp(k, t->NO.tpalavra.Palavra))){
-        // printf("Elemento encontrado\n");
-        // Imprime_TPalavra(&(t->NO.tpalavra));
-            return t;
+            printf("Elemento encontrado\n");
+            Imprime_TPalavra(&(t->NO.tpalavra));
+        // return t;
         }
         else{
             printf("Elemento não encontrado\n");
@@ -171,6 +171,7 @@ int Pal_por_Doc(){
 
 
 //Função que calcula a relevancia de um documento, parametros: arvore, vetor de termos, numero de termos, Id do documento, numero de documentos, numero de palavras no documento
+
 float Busca_textos(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc){
     
     int i;
