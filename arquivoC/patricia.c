@@ -48,9 +48,9 @@ TipoArvore CriaNoExt(char k[50], int IdDoc){
 void Pesquisa (char k[50], TipoArvore t){
     if(EExterno(t)){
         if(!(strcmp(k, t->NO.tpalavra.Palavra))){
-        // printf("Elemento encontrado\n");
-        // Imprime_TPalavra(&(t->NO.tpalavra));
-            return t;
+            printf("Elemento encontrado\n");
+            Imprime_TPalavra(&(t->NO.tpalavra));
+        // return t;
         }
         else{
             printf("Elemento não encontrado\n");
@@ -160,7 +160,7 @@ void MostraArvore(TipoArvore t){
 
 //EM DESENVOLVIMENTO
 
-
+/*
 float Busca_textos(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc){
     
     int i;
@@ -197,4 +197,4 @@ float Peso_termo(TipoArvore t, int IDdoc, int N_Doc){
 
     return peso;
 
-}
+}*/
