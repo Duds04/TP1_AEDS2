@@ -5,7 +5,7 @@ all:
 
 gtk:
 	clear
-	./grafica/builddir/demo
+	./grafica/build/demo
 
 clean:
 	rm -rf *.o ./exec
