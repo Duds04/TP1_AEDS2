@@ -58,10 +58,24 @@ int Ocorrencias_Palavra(TPalavra* pPalavra, int IdDoc){
         return 0;
     }
 }
-
 //Retorna a quantidade de documentos em que a palavra ocorre
 int Qtde_Docs_Palavra(TPalavra* pPalavra){
 
     
 	return Tamanho_LOcorrencia(&pPalavra->ocorrencias);
+}
+
+//Função para calcular quantas vezes a palavra aparece em cada documento
+void Oc_Palavras_Docs(TPalavra* pPalavra, int *Documentos){
+        
+    //Apontador para celula para percorrer a lista
+    POcorrencia pAux;
+    //Começa apontando para a primeira celula após a celula cabeça
+    pAux = pPalavra->ocorrencias.pPrimeiro->pProx;
+    while(pAux != NULL){
+
+        Documentos[pAux->IdDOc - 1] += pAux->qtde;
+        pAux = pAux->pProx;
+
+    }
 }

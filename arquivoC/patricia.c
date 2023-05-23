@@ -45,17 +45,15 @@ TipoArvore CriaNoExt(char k[50], int IdDoc){
 
 }
 
-void Pesquisa (char k[50], TipoArvore t){
+TipoArvore Pesquisa (char k[50], TipoArvore t){
     if(EExterno(t)){
         if(!(strcmp(k, t->NO.tpalavra.Palavra))){
-            printf("Elemento encontrado\n");
-            Imprime_TPalavra(&(t->NO.tpalavra));
-        // return t;
+            return t;
         }
         else{
             printf("Elemento não encontrado\n");
         }
-        return;
+        return NULL;
     }
     if(Bit(t->NO.NoInterno.Index, k) > t->NO.NoInterno.letra){
         Pesquisa(k, t->NO.NoInterno.Dir);
@@ -161,51 +159,104 @@ void MostraArvore(TipoArvore t){
 //EM DESENVOLVIMENTO
 
 //calcula o numero de palavras por documento
-int Pal_por_Doc(){
+void Pal_por_Doc(TipoArvore t, int* Documentos){
 
-    
-
-
-
+    if(t == NULL){
+        return;
+    }
+    else if(EExterno(t)){
+        Oc_Palavras_Docs(&t->NO.tpalavra, Documentos);
+        return;
+    }
+    else{
+        Pal_por_Doc(t->NO.NoInterno.Esq, Documentos);
+        Pal_por_Doc(t->NO.NoInterno.Dir, Documentos);
+    }
+    return;
 }
 
 
-//Função que calcula a relevancia de um documento, parametros: arvore, vetor de termos, numero de termos, Id do documento, numero de documentos, numero de palavras no documento
-
-float Busca_textos(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc){
+//Função que calcula a relevancia dos documentos, parametros: arvore, vetor de termos, numero de termos, Id do documento, numero de documentos
+void Busca_textos(TipoArvore t, char termos[250], int N_Doc, int* vetor_de_relevancia){
     
     int i;
-    float peso = 0;
+    double peso = 0;
+
+    //Cria e inicializa vetor com o numero de palavras por documento
+    int pal_por_doc[N_Doc];
+    for(int i = 0; i < N_Doc; i++){
+        pal_por_doc[i] = 0;
+    }
+    //Calcula o numero de palavras por documento e preenche o vetor
+    Pal_por_Doc(t, pal_por_doc);
+
+    int n_palavras;
+    char **palavras = separa_frase(termos, &n_palavras);
+    int doc = 0;
+    for(i = 0; i < (10*2); i = i + 2){
+    printf("//////////////////////////////////////////////////////////////////\n");
+        doc++;
+        vetor_de_relevancia[i] = Relevancia(t, palavras, n_palavras, doc, N_Doc, pal_por_doc[doc-1]);
+        printf("abom\n");
+        vetor_de_relevancia[i+1] = doc;
+        printf("%d\n", vetor_de_relevancia[i+1]);
+    }
+
+    return;
+
+}
+
+//Função que calcula a relevancia de um documento, parametros: arvore, vetor de termos, numero de termos, Id do documento, numero de documentos, numero de palavras no documento
+double Relevancia(TipoArvore t, char **palavras, int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc){
+    printf("%d\n", n_termos);
+    int i;
+    double relevancia = 0;
+    TipoArvore aux;
     for(i = 0; i < n_termos; i++){
-        peso = Relevancia(t, termos[i], n_termos, IDdoc, N_Doc, N_Palavras_doc);
+        printf("%s\n", palavras[i]);
+        aux = Pesquisa(palavras[i], t);
+        relevancia += Peso_termo(aux, IDdoc, N_Doc);
+        printf("%f", Peso_termo(aux, IDdoc, N_Doc));
+        printf("que merda\n");
+        printf("N_Palavras_doc: %d\n", N_Palavras_doc);
+        printf("relevancia antes: %f\n", relevancia);
+
+        printf("1/N_Palavras_doc: %f\n", (1/N_Palavras_doc));
+        printf("relevancia depois: %f\n", (relevancia/N_Palavras_doc));
+        relevancia = relevancia/N_Palavras_doc;
+        printf("%f\n", relevancia);
     }
-
-    return peso;
-
-}
-
-//Função que calcula a relevancia de um documento, parametros: arvore, vetor de termos, numero de termos, Id do documento, numero de documentos, numero de palavras no documento
-float Relevancia(TipoArvore t, char termos[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc){
-
-    int i;
-    float relevancia = 0;
-
-    for(i=0; i<n_termos; i++){
-        relevancia += Peso_termo(t, IDdoc, N_Doc);
-        relevancia = relevancia * (1/N_Palavras_doc);
-    }
-
+    printf("opadois\n");
     return relevancia;
 
 }
 
 //Função que calcula o peso de um termo em um documento, parametros: Nó da arvore que contém o termo, Id do documento, numero de documentos
-float Peso_termo(TipoArvore t, int IDdoc, int N_Doc){
+double Peso_termo(TipoArvore t, int IDdoc, int N_Doc){
 
-    float peso;
+    double peso;
 
     peso = Ocorrencias_Palavra(&t->NO.tpalavra, IDdoc) * log10(N_Doc/Qtde_Docs_Palavra(&t->NO.tpalavra));
-
     return peso;
 
+}
+
+//Função que separa e conta as palavras de uma frase, parametros: frase, ponteiro para o numero de palavras
+char** separa_frase(char *frase, int* n_palavras){
+
+    char *palavra = strtok(frase, " ");
+    char **palavras = malloc(sizeof(char*));
+    int i = 0;
+    *n_palavras = 0;
+    while(palavra != NULL){
+
+        palavras[i] = malloc(sizeof(char)*strlen(palavra));
+        strcpy(palavras[i], palavra);
+        palavra = strtok(NULL, " ");
+        i++;
+        (*n_palavras)++;
+        palavras = realloc(palavras, sizeof(char*)*(i+1));
+    }
+
+    return palavras;
 }
