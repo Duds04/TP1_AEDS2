@@ -33,13 +33,13 @@ int main()
     char termos[250];
     // printf("Digite os termos de busca: \n");
     // scanf(" %[^\n]s", termos);
-    strcpy(termos, "case the problems");
-    int vetor_de_relevancia[28];
+    strcpy(termos, "case the problems single consists");
+    Doc reldoc[14];
     printf("opa\n");
-    Busca_textos(Pat, termos, 14, vetor_de_relevancia);
+    Busca_textos(Pat, termos, 14, reldoc);
     printf("opa3\n");
-    for(int i = 0; i < 28; i++){
-        printf("%f", vetor_de_relevancia[i]);
+    for(int i = 0; i < 14; i++){
+        printf("relevancia doc %d: %.10f\n", reldoc[i].IDDoc + 1, reldoc[i].relevancia);
     }
 
 }
