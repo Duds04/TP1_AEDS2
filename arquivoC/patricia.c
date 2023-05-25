@@ -73,22 +73,22 @@ TipoArvore InsereEntre(char k[50], TipoArvore* t, int i, int IdDoc, char LetraDi
         p = CriaNoExt(k, IdDoc);
 
         // Se a posião i da palavra for maior
-        if(Bit(i, k) > LetraDif){
+        if(Bit(i, k) >= LetraDif){
 
             /* Se o caractere i da palavra inserida for maior: cria nó interno que guarda i, 
-            LetraDif (menor letra entre as posiçoes das palavras comparadas), 
-            palavra inserida na direita, arvore restante para esquerda (menor ou igual para a esquerda)*/
-            return CriaNoInt(i, t, &p, LetraDif);
+            o caractere i pa palavra (maior letra entre as posiçoes das palavras comparadas), 
+            palavra inserida na direita, arvore restante para esquerda (maior ou igual para a dierita)*/
+            return CriaNoInt(i, t, &p, Bit(i, k));
         }else{
 
             /* Se o caractere i da palavra inserida for menor: cria nó interno que guarda i, 
-            o caractere i pa palavra (menor letra entre as posiçoes das palavras comparadas), 
-            palavra inserida na esquerda, arvore restante para direita (menor ou igual para a esquerda)*/
-            return CriaNoInt(i, &p, t, Bit(i, k));
+            LetraDif (maior letra entre as posiçoes das palavras comparadas), 
+            palavra inserida na esquerda, arvore restante para direita (maior ou igual para a direita)*/
+            return CriaNoInt(i, &p, t, LetraDif);
         }
     }else{
         // Procura o lugar para criar o nó
-        if(Bit((*t)->NO.NoInterno.Index, k) > (*t)->NO.NoInterno.letra){
+        if(Bit((*t)->NO.NoInterno.Index, k) >= (*t)->NO.NoInterno.letra){
             (*t)->NO.NoInterno.Dir = InsereEntre(k, &(*t)->NO.NoInterno.Dir, i, IdDoc, LetraDif);
         }else{
             (*t)->NO.NoInterno.Esq = InsereEntre(k, &(*t)->NO.NoInterno.Esq, i, IdDoc, LetraDif);
@@ -112,7 +112,7 @@ TipoArvore Insere(char k[50], TipoArvore* t, int IdDoc){
         while(!EExterno(p)){
             if(p->NO.NoInterno.Index < strlen(k)){
                 // Caso o tamanho da palavra seja maior ou igual, percorre normalmente
-                if(Bit(p->NO.NoInterno.Index, k) > p->NO.NoInterno.letra){
+                if(Bit(p->NO.NoInterno.Index, k) >= p->NO.NoInterno.letra){
                     p = p->NO.NoInterno.Dir;
                 }
                 else{
