@@ -35,9 +35,11 @@ int main()
     // scanf(" %[^\n]s", termos);
     strcpy(termos, "the travelling problems technologies include nanomagnetic and quantum");
     Doc reldoc[14];
-    Busca_textos(Pat, termos, 14, reldoc);
-    for(int i = 0; i < 14; i++){
-        printf("relevancia doc %d: %.90f\n", reldoc[i].IDDoc, reldoc[i].relevancia);
-    }
 
+    Busca_textos(Pat, termos, 14, reldoc);
+
+    for(int i = 0; i < 14; i++){
+        printf("\nID: %d, Relevancia: %lf\n", reldoc[i].IDDoc, reldoc[i].relevancia);
+    }
+    
 }
