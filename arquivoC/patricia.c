@@ -55,7 +55,7 @@ TipoArvore Pesquisa (char k[50], TipoArvore t){
         }
         return NULL;
     }
-    if(Bit(t->NO.NoInterno.Index, k) > t->NO.NoInterno.letra){
+    if(Bit(t->NO.NoInterno.Index, k) >= t->NO.NoInterno.letra){
         Pesquisa(k, t->NO.NoInterno.Dir);
     }else{
         Pesquisa(k, t->NO.NoInterno.Esq);
