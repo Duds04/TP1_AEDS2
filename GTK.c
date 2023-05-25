@@ -50,6 +50,10 @@ void on_botao_pesquisa_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_pesquisa");
 }
 
+void on_botao_ajuda_clicked(GtkWidget *widget, gpointer data){
+  gtk_stack_set_visible_child_name(stack, "view_ajuda");
+}
+
 
 void on_botao_sair_opcao_clicked(GtkWidget *widget, gpointer data){
   gtk_main_quit();
@@ -60,6 +64,10 @@ void on_botao_voltar_pesquisa_clicked(GtkWidget *widget, gpointer data){
 }
 
 void on_botao_voltar_printar_clicked(GtkWidget *widget, gpointer data){
+  gtk_stack_set_visible_child_name(stack, "view_opcao");
+}
+
+void on_botao_voltar_ajuda_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_opcao");
 }
 
@@ -83,8 +91,11 @@ int main (int argc, char **argv){
         "on_botao_sair_opcao_clicked",                    G_CALLBACK(on_botao_sair_opcao_clicked),
         "on_botao_voltar_pesquisa_clicked",               G_CALLBACK(on_botao_voltar_pesquisa_clicked),
         "on_botao_voltar_printar_clicked",                G_CALLBACK(on_botao_voltar_printar_clicked),
+        "on_botao_voltar_ajuda_clicked",                G_CALLBACK(on_botao_voltar_ajuda_clicked),
+        "on_botao_ajuda_clicked",                G_CALLBACK(on_botao_ajuda_clicked),
 
     NULL);
+
 
     gtk_builder_connect_signals(builder,NULL);
 
