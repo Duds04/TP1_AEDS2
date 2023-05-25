@@ -13,3 +13,4 @@ double Peso_termo(TipoArvore t, int IDdoc, int N_Doc);
 void Pal_por_Doc(TipoArvore t, int* Documentos);
 void separa_frase(char *frase, int *n_termos, char **palavras);
 void separa_frase2(char* frase, int* n_palavras, char palavras[50][50]);
+void ordenar_docs(Doc *RelDocs, int tamanho);
