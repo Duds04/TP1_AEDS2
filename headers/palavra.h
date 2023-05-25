@@ -15,3 +15,4 @@ void Imprime_TPalavra(TPalavra* pPalavra);                            //Imprime 
 void Insere_Ocorrencia_Palavra(TPalavra* pPalavra, int IdDoc);                 //Insere uma ocorrencia na lista de ocorrencias da palavra
 int Ocorrencias_Palavra(TPalavra* pPalavra, int IdDoc);             //Retorna a quantidade de ocorrencias da palavra em um determinado documento
 int Qtde_Docs_Palavra(TPalavra* pPalavra);                   //Retorna a quantidade de documentos em que a palavra ocorre
+void Oc_Palavras_Docs(TPalavra* pPalavra, int *Documentos);

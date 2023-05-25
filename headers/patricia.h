@@ -22,8 +22,9 @@ typedef struct TipoPatNo{
 TipoDib Bit(TipoIndexAmp i, char k[50]);
 TipoArvore CriaNoInt(int i, TipoArvore* Esq, TipoArvore* Dir, char letra);
 TipoArvore CriaNoExt(char k[50], int IdDoc);
-void Pesquisa (char k[50], TipoArvore t);
+TipoArvore Pesquisa (char k[50], TipoArvore t);
 TipoArvore InsereEntre(char k[50], TipoArvore* t, int i, int IdDoc, char LetraDif);
 TipoArvore Insere(char k[50], TipoArvore* t, int IdDoc);
 short EExterno (TipoArvore p);
 void MostraArvore(TipoArvore t);
+void Pal_por_Doc(TipoArvore t, int* Documentos);

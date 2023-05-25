@@ -11,7 +11,6 @@ void FLOcorrencias_Vazia(LOcorrencias* pLista){
 }
 
 void Insere_Ocorrencia(LOcorrencias* pLista, int IdDoc){
-
     //Verifica se a palavra ja apareceu antes nesse documento, se sim, incrementa a quantidade de ocorrencias
 
     if (Verifica_Ocorrencia(pLista, IdDoc) != 0){
@@ -50,7 +49,6 @@ void Imprimir_Ocorrencia(LOcorrencias* pLista){
 }
 
 POcorrencia Verifica_Ocorrencia(LOcorrencias* pLista, int IdDoc){
-	
 	//Apontador para celula para percorrer a lista
 	POcorrencia pAux;
 	//Começa apontando para a primeira celula após a celula cabeça
