@@ -1,5 +1,25 @@
 #include "../headers/busca.h"
 
+// usando o metodo shellsort para ordenar o vetor (escolha com base nas poucas quantidades de elementos)
+void ordenar_docs(Doc *RelDocs, int tamanho)
+{
+    Doc maiorElemento;
+    for (int i = 0; i < tamanho; i++)
+    {
+        int indice = i;
+        for (int j = i + 1; j < tamanho; j++)
+        {
+            if (RelDocs[j].relevancia > RelDocs[indice].relevancia)
+            {
+                indice = j;
+            }
+        }
+        maiorElemento = RelDocs[indice];
+        RelDocs[indice] = RelDocs[i];
+        RelDocs[i] = maiorElemento;
+    }
+}
+
 
 //Função que calcula a relevancia dos documentos, parametros: arvore, vetor de termos, numero de termos, Id do documento, numero de documentos
 void Busca_textos(TipoArvore t, char termos[250], int N_Doc, Doc RelDocs[N_Doc]){
@@ -21,6 +41,10 @@ void Busca_textos(TipoArvore t, char termos[250], int N_Doc, Doc RelDocs[N_Doc])
         RelDocs[i].relevancia = Relevancia(t, palavras, n_palavras, i + 1, N_Doc, pal_por_doc[i]);
         RelDocs[i].IDDoc = i + 1;
     }
+
+    
+
+    ordenar_docs(RelDocs, N_Doc);
     return;
 
 }
