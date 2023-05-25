@@ -32,8 +32,10 @@ double Relevancia(TipoArvore t, char palavras[50][50], int n_termos, int IDdoc, 
     TipoArvore aux;
     for(i = 0; i < n_termos; i++){
         aux = Pesquisa(palavras[i], t);
-        relevancia += Peso_termo(aux, IDdoc, N_Doc);
-        relevancia = relevancia/N_Palavras_doc;
+        if(aux != NULL){
+            relevancia += Peso_termo(aux, IDdoc, N_Doc);
+            relevancia = relevancia/N_Palavras_doc;
+        }
     }
     return relevancia;
 

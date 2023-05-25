@@ -51,7 +51,7 @@ TipoArvore Pesquisa (char k[50], TipoArvore t){
             return t;
         }
         else{
-            printf("Elemento não encontrado\n");
+            //printf("Elemento não encontrado\n");
         }
         return NULL;
     }
