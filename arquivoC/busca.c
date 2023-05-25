@@ -16,7 +16,6 @@ void Busca_textos(TipoArvore t, char termos[250], int N_Doc, Doc RelDocs[N_Doc])
 
     int n_palavras;
     char palavras[50][50];
-    printf("antess\n");
     separa_frase2(termos, &n_palavras, palavras);
     for(i = 0; i < N_Doc; i++){
         RelDocs[i].relevancia = Relevancia(t, palavras, n_palavras, i + 1, N_Doc, pal_por_doc[i]);
