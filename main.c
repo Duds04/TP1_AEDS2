@@ -33,13 +33,11 @@ int main()
     char termos[250];
     // printf("Digite os termos de busca: \n");
     // scanf(" %[^\n]s", termos);
-    strcpy(termos, "case the problems single consists");
+    strcpy(termos, "the travelling problems technologies include nanomagnetic and quantum");
     Doc reldoc[14];
-    printf("opa\n");
     Busca_textos(Pat, termos, 14, reldoc);
-    printf("opa3\n");
     for(int i = 0; i < 14; i++){
-        printf("relevancia doc %d: %.10f\n", reldoc[i].IDDoc + 1, reldoc[i].relevancia);
+        printf("relevancia doc %d: %.90f\n", reldoc[i].IDDoc, reldoc[i].relevancia);
     }
 
 }
