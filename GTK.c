@@ -1,7 +1,9 @@
+#include "./"
 #include <gtk/gtk.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+
 
 GtkBuilder *builder;
 GtkWidget *window;
