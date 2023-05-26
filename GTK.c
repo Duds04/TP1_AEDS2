@@ -91,8 +91,8 @@ int main (int argc, char **argv){
         "on_botao_sair_opcao_clicked",                    G_CALLBACK(on_botao_sair_opcao_clicked),
         "on_botao_voltar_pesquisa_clicked",               G_CALLBACK(on_botao_voltar_pesquisa_clicked),
         "on_botao_voltar_printar_clicked",                G_CALLBACK(on_botao_voltar_printar_clicked),
-        "on_botao_voltar_ajuda_clicked",                G_CALLBACK(on_botao_voltar_ajuda_clicked),
-        "on_botao_ajuda_clicked",                G_CALLBACK(on_botao_ajuda_clicked),
+        "on_botao_voltar_ajuda_clicked",                  G_CALLBACK(on_botao_voltar_ajuda_clicked),
+        "on_botao_ajuda_clicked",                         G_CALLBACK(on_botao_ajuda_clicked),
 
     NULL);
 
@@ -107,3 +107,4 @@ int main (int argc, char **argv){
     gtk_main();
     return 0;
 }
+
