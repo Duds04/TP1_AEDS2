@@ -75,31 +75,6 @@ double Peso_termo(TipoArvore t, int IDdoc, int N_Doc){
 
 }
 
-//Função que separa e conta as palavras de uma frase, parametros: frase, ponteiro para o numero de palavras
-void separa_frase(char *frase, int* n_palavras, char **palavras){
-
-    //Não funciona
-    char *palavra = malloc(sizeof(char)*50);
-    strcpy(palavra, strtok(frase, " "));
-    int i = 0;
-    *n_palavras = 0;
-    while(palavra != NULL){
-
-        strcpy(palavras[i], palavra);
-        palavra = strtok(NULL, " ");
-        i++;
-        (*n_palavras)++;
-        palavras = realloc(palavras, sizeof(char*)*(i+1));
-    }
-    free(palavra);
-    for(i = 0; i < *n_palavras; i++){
-        printf("sim%s\n", palavras[i]);
-    printf("durante\n");
-    }
-
-    return;
-}
-
 //função para separar frase sem usar alocação dinamica feita pelo chat gpt
 void separa_frase2(char* frase, int* n_palavras, char palavras[50][50]) {
     int i = 0;  // Índice da palavra atual
