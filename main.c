@@ -10,6 +10,7 @@ GtkBuilder *builder;
 GtkWidget *window;
 GtkStack *stack;
 
+
 void on_main_window_destroy(GtkWidget *widget, gpointer data){
   gtk_main_quit();
 }
@@ -158,6 +159,46 @@ int main (int argc, char **argv){
 
     return 0;
 }
+
+// int main()
+// {
+//     char caminho[20] = "./entradas/";
+//     char arquivo[30];
+//     /*
+//     //teste função separa palavras
+//     char frase[100] = {"o rato roeu a roupa do rei de roma"};
+//     int n;
+//     char **palavras = separa_frase(frase, &n);
+//     for(int i = 0; i < 9; i++){
+//         printf("%s\n", palavras[i]);
+//     }
+//     ////////////////////////////////////////////////////////////
+//     */
+//     //TESTEPATRICIA
+//     // printf("Digite o nome do arquivo (com sua extensao .txt): \n");
+//     // scanf(" %s", arquivo);
+//     TipoArvore Pat = NULL;
+
+//     strcpy(arquivo, "listagemArquivos.txt");
+//     strcat(caminho, arquivo);
+//     leituraArquivo(caminho, &Pat);
+//     MostraArvore(Pat);
+//     ////////////////////////////////////////////////////////////
+
+//     //TESTE BUSCA
+
+//     char termos[250];
+//     // printf("Digite os termos de busca: \n");
+//     // scanf(" %[^\n]s", termos);
+//     strcpy(termos, "the travelling problems technologies include nanomagnetic and quantum");
+//     Doc reldoc[14];
+
+//     Busca_textos(Pat, termos, 14, reldoc);
+
+//     for(int i = 0; i < 14; i++){
+//         printf("\nID: %d, Relevancia: %lf\n", reldoc[i].IDDoc, reldoc[i].relevancia);
+//     }
+    
 
 // gcc ./headers/include.h	 ./headers/ocorrencias.h	 ./headers/patricia.h	 ./headers/leitura.h	 ./arquivoC/ocorrencias.c	 ./arquivoC/patricia.c ./arquivoC/palavra.c ./headers/palavra.h	./arquivoC/leitura.c   main.c	 -o	 exec
 // 	./exec

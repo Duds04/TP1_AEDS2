@@ -11,7 +11,6 @@ void FLOcorrencias_Vazia(LOcorrencias* pLista){
 }
 
 void Insere_Ocorrencia(LOcorrencias* pLista, int IdDoc){
-
     //Verifica se a palavra ja apareceu antes nesse documento, se sim, incrementa a quantidade de ocorrencias
 
     if (Verifica_Ocorrencia(pLista, IdDoc) != 0){
@@ -29,7 +28,6 @@ void Insere_Ocorrencia(LOcorrencias* pLista, int IdDoc){
     
 }
 
-//FUNÇÃO NÃO ADAPTADA PARA O TRABALHO
 void Imprimir_Ocorrencia(LOcorrencias* pLista){
 
 	//Apontador para celula utilizado para percorrer a lista de posições
@@ -51,7 +49,6 @@ void Imprimir_Ocorrencia(LOcorrencias* pLista){
 }
 
 POcorrencia Verifica_Ocorrencia(LOcorrencias* pLista, int IdDoc){
-	
 	//Apontador para celula para percorrer a lista
 	POcorrencia pAux;
 	//Começa apontando para a primeira celula após a celula cabeça
@@ -75,4 +72,22 @@ POcorrencia Verifica_Ocorrencia(LOcorrencias* pLista, int IdDoc){
 	
 }
 
+int Tamanho_LOcorrencia(LOcorrencias* pLista){
+	
+	//Apontador para celula para percorrer a lista
+	POcorrencia pAux;
+	//Começa apontando para a primeira celula após a celula cabeça
+	pAux = pLista->pPrimeiro->pProx;
+	int tamanho = 0;
+	while(pAux != NULL){
+		
+		//Percorre toda a lista comparando os valores 
+		tamanho++;
+		pAux = pAux->pProx;
+		
+	}
+	
+	return tamanho;
+	
+}
 
