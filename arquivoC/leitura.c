@@ -1,19 +1,20 @@
 #include "../headers/leitura.h"
 
 
-int leituraArquivo(char *pArquivo, TipoArvore* Pat)
+int leituraArquivo(char *pArquivo, TipoArvore* Pat, int quant)
 {
     FILE *arquivo, *arquivoInterno;
     int idDoc = 0;
     char guardaArquivo[50], guardaPalavra[200]; // vetor auxiliar para guardar palavra
     char c;
     char caminho[70] = "../entradas/";
+    int i = 0;
 
     if ((arquivo = fopen(pArquivo, "r")) != NULL)
-    {
-        while (fscanf(arquivo, "%s", guardaArquivo) != EOF)
+    { 
+        while (fscanf(arquivo, "%s", guardaArquivo) != EOF )
         {
-            if (idDoc != 0)
+            if (idDoc != 0 && idDoc < quant+1)
             {
                 strcpy(caminho, "../entradas/");
                 strcat(caminho, guardaArquivo);
@@ -26,19 +27,18 @@ int leituraArquivo(char *pArquivo, TipoArvore* Pat)
                 }
                 else
                 {   
-                    fprintf(stderr, "Erro ao abrir o arquivo");
-                    return 0;
+                    return 0; //"Erro ao abrir o arquivo"
                 }
 
             }
 
             idDoc++;
         }
+        
     }
     else
     {
-        fprintf(stderr, "Erro ao abrir o arquivo");
-        return 0;
+        return 0; //"Erro ao abrir o arquivo"
     }
 
     fclose(arquivo);

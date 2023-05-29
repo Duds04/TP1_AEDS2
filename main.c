@@ -1,8 +1,3 @@
-#include <gtk/gtk.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include "./headers/include.h"
 #include "./headers/leitura.h"
 
 
@@ -10,6 +5,7 @@ GtkBuilder *builder;
 GtkWidget *window;
 GtkStack *stack;
 TipoArvore Pat;
+int QuantAquivo = 0;
 
 
 void on_main_window_destroy(GtkWidget *widget, gpointer data){
@@ -40,9 +36,7 @@ void on_botao_sair_opcao_clicked(GtkWidget *widget, gpointer data){
   gtk_main_quit();
 }
 
-void on_botao_ajuda_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_ajuda");
-}
+
 void on_botao_voltar_pesquisa_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_opcao");
 }
@@ -52,7 +46,14 @@ void on_botao_voltar_printar_clicked(GtkWidget *widget, gpointer data){
 void on_botao_voltar_ajuda_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_opcao");
 }
+void on_botao_voltar_mandar_clicked(GtkWidget *widget, gpointer data){
+  gtk_stack_set_visible_child_name(stack, "view_opcao");
+}
 
+
+void on_botao_ajuda_clicked(GtkWidget *widget, gpointer data){
+  gtk_stack_set_visible_child_name(stack, "view_ajuda");
+}
 void on_botao_voltar_ajuda_ajuda1_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_ajuda");
 }
@@ -66,6 +67,7 @@ void on_botao_voltar_ajuda_ajuda4_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_ajuda");
 }
 
+
 void on_botao_arquivos_ajuda_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "ajuda_arquivos");
 }
@@ -78,12 +80,31 @@ void on_botao_pesquisa_ajuda_clicked(GtkWidget *widget, gpointer data){
 void on_botao_printar_arvore_ajuda_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "ajuda_printar");
 }
-
-
-
-
+void on_botao_pesquisa_clicked(GtkWidget *widget, gpointer data){
+  gtk_stack_set_visible_child_name(stack, "view_pesquisa");
+}
 void on_butao_arquivos_clicked(GtkWidget *widget, gpointer data){
-  //Receber os arquivos
+  gtk_stack_set_visible_child_name(stack, "view_arquivo");
+}
+
+void exibir_palavra(const char* palavra) {
+    GtkLabel* label = GTK_LABEL(gtk_builder_get_object(builder, "label_palavra"));
+    gtk_label_set_text(label, palavra);
+}
+
+
+void on_botao_mandar_clicked(GtkWidget *widget, gpointer data){
+  char* aux = gtk_entry_get_text(gtk_builder_get_object(builder, "Quantidade"));    
+  QuantAquivo = atoi(aux);
+  log_message("Botão 'Mandar' clicado"); // Log da ação
+
+  if (QuantAquivo >= 1 && QuantAquivo <= 14)
+    mensagem("Operacao concluida!!", "Recebemos os Arquivos", "emblem-default");
+  else 
+    mensagem("Operacao falhou", "Os arquivos nao foram recebidos ", "emblem-default");
+}
+
+void on_botao_indice_clicked(GtkWidget *widget, gpointer data){
   int erro;
   char caminho[20] = "../entradas/";
   char arquivo[30];
@@ -92,16 +113,11 @@ void on_butao_arquivos_clicked(GtkWidget *widget, gpointer data){
   strcpy(arquivo, "listagemArquivos.txt");
   strcat(caminho, arquivo);
 
-  erro = leituraArquivo(caminho,&Pat);
+  erro = leituraArquivo(caminho,&Pat, QuantAquivo);
   if (erro)
-    mensagem("Operacao concluida!!", "Os arquivos foram inceridos com sucesso! ", "emblem-default");
+    mensagem("Operacao concluida!!", "A construçao do indice invertida foi feita! ", "emblem-default");
   else
-    mensagem("Operacao falhou", "Os arquivos nao foram recebidos ", "emblem-default");
-}
-
-void on_botao_indice_clicked(GtkWidget *widget, gpointer data){
-  //Constroi os indices invertidos. O que é?
-  mensagem("Operacao concluida!!", "A construçao do indice invertida foi feita! ", "emblem-default");
+    mensagem("Operacao falhou", "Nao foi possivel fazer o indice invertido ", "emblem-default");
 }
 
 void on_botao_printar_arvore_clicked(GtkWidget *widget, gpointer data){
@@ -109,23 +125,22 @@ void on_botao_printar_arvore_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_printar");
 }
 
-void on_botao_pesquisa_clicked(GtkWidget *widget, gpointer data){
+void BuscaGTK(char termos[250]){
+  Doc reldoc[14];
+  Busca_textos(Pat, termos, QuantAquivo, reldoc);
 
-  // char termos[250];
+  for(int i = 0; i < QuantAquivo; i++){
 
-  // strcpy(termos, "the travelling problems technologies include nanomagnetic and quantum");
-  // Doc reldoc[14];
-
-  // Busca_textos(Pat, termos, 3, reldoc);
-
-  // for(int i = 0; i < 14; i++){
-  //     printf("\nID: %d, Relevancia: %lf\n", reldoc[i].IDDoc, reldoc[i].relevancia);
-  // }
-  gtk_stack_set_visible_child_name(stack, "view_pesquisa");
+      g_print("\nID: %d, Relevancia: %lf\n", reldoc[i].IDDoc, reldoc[i].relevancia);
+  }
 }
 
-
-
+void on_botao_mandar_pesquisa_clicked(GtkWidget *widget, gpointer data){
+  const char* termos = gtk_entry_get_text(GTK_ENTRY(gtk_builder_get_object(builder, "cad_pesquisa")));
+  // char *termos = gtk_entry_get_text(gtk_builder_get_object(builder, "cad_pesquisa")); 
+  exibir_palavra(termos);
+  // BuscaGTK(termos);
+}
 
 
 
@@ -160,6 +175,9 @@ int main (int argc, char **argv){
         "on_botao_pesquisa_ajuda_clicked",                G_CALLBACK(on_botao_pesquisa_ajuda_clicked),
         "on_botao_printar_arvore_ajuda_clicked",          G_CALLBACK(on_botao_printar_arvore_ajuda_clicked),
         "on_botao_ajuda_clicked",                         G_CALLBACK(on_botao_ajuda_clicked),
+        "on_botao_mandar_pesquisa_clicked",               G_CALLBACK(on_botao_mandar_pesquisa_clicked),
+        "on_botao_mandar_clicked",                        G_CALLBACK(on_botao_mandar_clicked),
+        "on_botao_voltar_mandar_clicked",                        G_CALLBACK(on_botao_voltar_mandar_clicked),
 
     NULL);
 
@@ -172,57 +190,6 @@ int main (int argc, char **argv){
 
     gtk_widget_show_all(window);
     gtk_main();
-    // TipoArvore Pat = NULL;
-
-
-    // strcpy(arquivo, "listagemArquivos.txt");
-    // strcat(caminho, arquivo);
-    // leituraArquivo(caminho, &Pat);
-
-    // MostraArvore(Pat);
-
     return 0;
 }
 
-// int main()
-// {
-//     char caminho[20] = "./entradas/";
-//     char arquivo[30];
-//     /*
-//     //teste função separa palavras
-//     char frase[100] = {"o rato roeu a roupa do rei de roma"};
-//     int n;
-//     char **palavras = separa_frase(frase, &n);
-//     for(int i = 0; i < 9; i++){
-//         printf("%s\n", palavras[i]);
-//     }
-//     ////////////////////////////////////////////////////////////
-//     */
-//     //TESTEPATRICIA
-//     // printf("Digite o nome do arquivo (com sua extensao .txt): \n");
-//     // scanf(" %s", arquivo);
-//     TipoArvore Pat = NULL;
-
-//     strcpy(arquivo, "listagemArquivos.txt");
-//     strcat(caminho, arquivo);
-//     leituraArquivo(caminho, &Pat);
-//     MostraArvore(Pat);
-//     ////////////////////////////////////////////////////////////
-
-    //TESTE BUSCA
-
-    // char termos[250];
-    // // printf("Digite os termos de busca: \n");
-    // // scanf(" %[^\n]s", termos);
-    // strcpy(termos, "the travelling problems technologies include nanomagnetic and quantum");
-    // Doc reldoc[14];
-
-    // Busca_textos(Pat, termos, 14, reldoc);
-
-    // for(int i = 0; i < 14; i++){
-    //     printf("\nID: %d, Relevancia: %lf\n", reldoc[i].IDDoc, reldoc[i].relevancia);
-    // }
-    
-
-// gcc ./headers/include.h	 ./headers/ocorrencias.h	 ./headers/patricia.h	 ./headers/leitura.h	 ./arquivoC/ocorrencias.c	 ./arquivoC/patricia.c ./arquivoC/palavra.c ./headers/palavra.h	./arquivoC/leitura.c   main.c	 -o	 exec
-// 	./exec
