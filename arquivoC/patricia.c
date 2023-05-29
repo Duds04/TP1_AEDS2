@@ -51,9 +51,9 @@ TipoArvore Pesquisa (char k[50], TipoArvore t){
             return t;
         }
         else{
-            //printf("Elemento não encontrado\n");
+            printf("Elemento não encontrado\n");
+            return NULL;
         }
-        return NULL;
     }
     if(Bit(t->NO.NoInterno.Index, k) >= t->NO.NoInterno.letra){
         Pesquisa(k, t->NO.NoInterno.Dir);
@@ -126,7 +126,7 @@ TipoArvore Insere(char k[50], TipoArvore* t, int IdDoc){
         }
         // Encontra o primeiro bit diferente
         i = 0;
-        while ((i<=strlen(k))& (Bit((int)i, k) == Bit((int)i, p->NO.tpalavra.Palavra))){
+        while ((i<=strlen(k)) && (Bit((int)i, k) == Bit((int)i, p->NO.tpalavra.Palavra))){
             i++;
         }
         // Se palavra existir, então adiciona ocorrencia da mesma de acordo com o IdDoc

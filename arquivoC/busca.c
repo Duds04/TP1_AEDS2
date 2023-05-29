@@ -52,7 +52,7 @@ void Busca_textos(TipoArvore t, char termos[250], int N_Doc, Doc RelDocs[N_Doc])
 //Função que calcula a relevancia de um documento, parametros: arvore, vetor de termos, numero de termos, Id do documento, numero de documentos, numero de palavras no documento
 double Relevancia(TipoArvore t, char palavras[50][50], int n_termos, int IDdoc, int N_Doc, int N_Palavras_doc){
     int i;
-    double relevancia = 0;
+    double relevancia = 0.0;
     TipoArvore aux;
     for(i = 0; i < n_termos; i++){
         aux = Pesquisa(palavras[i], t);

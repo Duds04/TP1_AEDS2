@@ -33,7 +33,7 @@ int main()
     char termos[250];
     // printf("Digite os termos de busca: \n");
     // scanf(" %[^\n]s", termos);
-    strcpy(termos, "arthur e joao");
+    strcpy(termos, "work");
     Doc reldoc[14];
 
     Busca_textos(Pat, termos, 14, reldoc);
