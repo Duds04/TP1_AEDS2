@@ -4,9 +4,11 @@
 GtkBuilder *builder;
 GtkWidget *window;
 GtkStack *stack;
-GtkListStore *armazenameto;
+GtkListStore *armazenameto_relevancia;
+GtkListStore *armazenamento_todos;
 TipoArvore Pat;
 int QuantAquivo = 0;
+
 
 
 // // typedef struct Dados* PDados;
@@ -141,21 +143,60 @@ void on_botao_indice_clicked(GtkWidget *widget, gpointer data){
     mensagem("Operacao falhou", "Nao foi possivel fazer o indice invertido ", "emblem-default");
 }
 
-void exibir_palavra(const char* palavra) {
-    GtkLabel* label = GTK_LABEL(gtk_builder_get_object(builder, "label_tree"));
-    gtk_label_set_text(label, palavra);
+void Imprimir_OcorrenciaGTK(LOcorrencias* pLista, GtkTreeIter iter, char* palavra){
+	POcorrencia pAux;
+  char index[140] = "";
+
+  pAux = pLista->pPrimeiro->pProx;
+	
+  while(pAux != NULL) {
+      // printf("<%d, %d> ", pAux->qtde, pAux->IdDOc );
+      // pAux = pAux->pProx;
+
+      sprintf(index, "%s<%d, %d> ", index, pAux->qtde, pAux->IdDOc );
+      pAux = pAux->pProx;
+      
+  }
+
+  gtk_list_store_append(armazenamento_todos, &iter);
+  gtk_list_store_set(armazenamento_todos, &iter,
+  0, palavra,
+  1, index,
+  -1);
+  // g_print("%s\n", index);
+  // return index;
+}
+
+void MostraArvoreGTK(TipoArvore t){
+    GtkTreeIter iter;
+    if(t == NULL){
+        return;
+    }
+    else if(EExterno(t)){
+        char *palavra = t->NO.tpalavra.Palavra;
+        Imprimir_OcorrenciaGTK(&(t->NO.tpalavra.ocorrencias), iter, palavra);
+        return;
+    }
+    else{
+    MostraArvoreGTK(t->NO.NoInterno.Esq);
+    MostraArvoreGTK(t->NO.NoInterno.Dir);
+    return;
+    }
 }
 
 void on_botao_printar_arvore_clicked(GtkWidget *widget, gpointer data){
 
-  MostraArvore(Pat);
+  MostraArvoreGTK(Pat);
+  
   gtk_stack_set_visible_child_name(stack, "view_tree");
 }
+
+
 
 void Imprime_Relevancia(Doc RelDocs[], int N_Doc){
   int i;
   GtkTreeIter iter;
-  gtk_list_store_clear(armazenameto);
+  gtk_list_store_clear(armazenameto_relevancia);
   char aux[15];
 
     for(i = 0; i < QuantAquivo; i++){
@@ -166,8 +207,8 @@ void Imprime_Relevancia(Doc RelDocs[], int N_Doc){
           // strcat(aux, RelDocs[i].IDDoc + '0');
           // strcat(aux, ".txt");
 
-          gtk_list_store_append(armazenameto, &iter);
-          gtk_list_store_set(armazenameto, &iter,
+          gtk_list_store_append(armazenameto_relevancia, &iter);
+          gtk_list_store_set(armazenameto_relevancia, &iter,
           0, RelDocs[i].IDDoc,
           1, aux,
           -1);
@@ -190,7 +231,6 @@ void on_botao_mandar_pesquisa_clicked(GtkWidget *widget, gpointer data){
 
   gtk_stack_set_visible_child_name(stack, "view_relevancia");
 }
-
 
 int main (int argc, char **argv){
 
@@ -239,7 +279,8 @@ int main (int argc, char **argv){
 
     stack =     GTK_WIDGET(gtk_builder_get_object(builder, "stack"));
     window =    GTK_WIDGET(gtk_builder_get_object(builder, "main_window"));
-    armazenameto = GTK_LIST_STORE(gtk_builder_get_object(builder, "list_relevancia"));
+    armazenameto_relevancia = GTK_LIST_STORE(gtk_builder_get_object(builder, "list_relevancia"));
+    armazenamento_todos = GTK_LIST_STORE(gtk_builder_get_object(builder, "list_todos"));
 
     gtk_widget_show_all(window);
     gtk_main();
