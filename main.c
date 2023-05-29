@@ -96,7 +96,6 @@ void exibir_palavra(const char* palavra) {
 void on_botao_mandar_clicked(GtkWidget *widget, gpointer data){
   char* aux = gtk_entry_get_text(gtk_builder_get_object(builder, "Quantidade"));    
   QuantAquivo = atoi(aux);
-  log_message("Botão 'Mandar' clicado"); // Log da ação
 
   if (QuantAquivo >= 1 && QuantAquivo <= 14)
     mensagem("Operacao concluida!!", "Recebemos os Arquivos", "emblem-default");
