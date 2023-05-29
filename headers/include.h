@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
-// #include <stdbool.h>
-//#include <gtk/gtk.h>
-//#include <glib.h>
+#include <stdbool.h>
+#include <gtk/gtk.h>
+#include <glib.h>
 
 
 #if defined(__MINGW32__) || defined(_MSC_VER)

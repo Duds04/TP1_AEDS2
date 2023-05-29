@@ -7,7 +7,7 @@ int leituraArquivo(char *pArquivo, TipoArvore* Pat, int quant)
     int idDoc = 0;
     char guardaArquivo[50], guardaPalavra[200]; // vetor auxiliar para guardar palavra
     char c;
-    char caminho[70] = "./entradas/";
+    char caminho[70] = "../entradas/";
     int i = 0;
 
     if ((arquivo = fopen(pArquivo, "r")) != NULL)
@@ -16,7 +16,7 @@ int leituraArquivo(char *pArquivo, TipoArvore* Pat, int quant)
         {
             if (idDoc != 0 && idDoc < quant+1)
             {
-                strcpy(caminho, "./entradas/");
+                strcpy(caminho, "../entradas/");
                 strcat(caminho, guardaArquivo);
                 if ((arquivoInterno = fopen(caminho, "r")) != NULL)
                 {
