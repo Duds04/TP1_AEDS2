@@ -23,6 +23,7 @@ void mensagem(char text[100], char secondary_text[200], char icon_name[100]){
     gtk_widget_show_all(mensagem_dialogo);
     gtk_dialog_run     (mensagem_dialogo);
     gtk_widget_hide    (mensagem_dialogo);
+    
 }
 
 void on_botao_inicio_clicked(GtkWidget *widget, gpointer data){
@@ -87,12 +88,6 @@ void on_butao_arquivos_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_arquivo");
 }
 
-void exibir_palavra(const char* palavra) {
-    GtkLabel* label = GTK_LABEL(gtk_builder_get_object(builder, "label_palavra"));
-    gtk_label_set_text(label, palavra);
-}
-
-
 void on_botao_mandar_clicked(GtkWidget *widget, gpointer data){
   char* aux = gtk_entry_get_text(gtk_builder_get_object(builder, "Quantidade"));    
   QuantAquivo = atoi(aux);
@@ -119,9 +114,16 @@ void on_botao_indice_clicked(GtkWidget *widget, gpointer data){
     mensagem("Operacao falhou", "Nao foi possivel fazer o indice invertido ", "emblem-default");
 }
 
+void exibir_palavra(const char* palavra) {
+    GtkLabel* label = GTK_LABEL(gtk_builder_get_object(builder, "label_tree"));
+    gtk_label_set_text(label, palavra);
+}
+
 void on_botao_printar_arvore_clicked(GtkWidget *widget, gpointer data){
-  MostraArvore(Pat);
-  gtk_stack_set_visible_child_name(stack, "view_printar");
+  // MostraArvore(Pat);
+  const char* oi = "Arthur <1-1> <1 - 2>\nrodrigo <1-1> 1";
+  exibir_palavra(oi);
+  gtk_stack_set_visible_child_name(stack, "text_view_tree");
 }
 
 void BuscaGTK(char termos[250]){
@@ -137,8 +139,7 @@ void BuscaGTK(char termos[250]){
 void on_botao_mandar_pesquisa_clicked(GtkWidget *widget, gpointer data){
   const char* termos = gtk_entry_get_text(GTK_ENTRY(gtk_builder_get_object(builder, "cad_pesquisa")));
   // char *termos = gtk_entry_get_text(gtk_builder_get_object(builder, "cad_pesquisa")); 
-  exibir_palavra(termos);
-  // BuscaGTK(termos);
+  BuscaGTK(termos);
 }
 
 
