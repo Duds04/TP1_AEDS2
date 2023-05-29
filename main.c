@@ -10,31 +10,6 @@ TipoArvore Pat;
 int QuantAquivo = 0;
 
 
-
-// // typedef struct Dados* PDados;
-// // typedef struct Dados{
-// //   char palavra[50];
-// //   char index[85];
-// //   PDados Prox;
-// // }TDados;
-
-
-// PDados PalAtual;
-// PDados PalProxima;
-
-// // typedef struct Documento* PDocumento;
-// // typedef struct Documento{
-// //   int ID;
-// //   char nome[14];
-// //   PDocumento Prox;
-// // }TDocumento;
-
-// PDados DocAtual;
-// PDados DocProxima;
-
-
-
-
 void on_main_window_destroy(GtkWidget *widget, gpointer data){
   gtk_main_quit();
 }
@@ -150,8 +125,6 @@ void Imprimir_OcorrenciaGTK(LOcorrencias* pLista, GtkTreeIter iter, char* palavr
   pAux = pLista->pPrimeiro->pProx;
 	
   while(pAux != NULL) {
-      // printf("<%d, %d> ", pAux->qtde, pAux->IdDOc );
-      // pAux = pAux->pProx;
 
       sprintf(index, "%s<%d, %d> ", index, pAux->qtde, pAux->IdDOc );
       pAux = pAux->pProx;
@@ -163,8 +136,6 @@ void Imprimir_OcorrenciaGTK(LOcorrencias* pLista, GtkTreeIter iter, char* palavr
   0, palavra,
   1, index,
   -1);
-  // g_print("%s\n", index);
-  // return index;
 }
 
 void MostraArvoreGTK(TipoArvore t){
@@ -232,9 +203,9 @@ void on_botao_mandar_pesquisa_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_relevancia");
 }
 
+
 int main (int argc, char **argv){
 
-    // DocAtual = (PDocumento) malloc(sizeof(TDocumento));
 
     gtk_init(&argc, &argv);
     
@@ -286,48 +257,3 @@ int main (int argc, char **argv){
     gtk_main();
     return 0;
 }
-
-
-// #include "./headers/leitura.h"
-
-// int main()
-// {
-//     char caminho[20] = "./entradas/";
-//     char arquivo[30];
-//     int N = 14;
-//     /*
-//     //teste função separa palavras
-//     char frase[100] = {"o rato roeu a roupa do rei de roma"};
-//     int n;
-//     char **palavras = separa_frase(frase, &n);
-//     for(int i = 0; i < 9; i++){
-//         printf("%s\n", palavras[i]);
-//     }
-//     ////////////////////////////////////////////////////////////
-//     */
-//     //TESTEPATRICIA
-//     // printf("Digite o nome do arquivo (com sua extensao .txt): \n");
-//     // scanf(" %s", arquivo);
-//     TipoArvore Pat = NULL;
-
-//     strcpy(arquivo, "listagemArquivos.txt");
-//     strcat(caminho, arquivo);
-//     leituraArquivo(caminho, &Pat, N);
-//     MostraArvore(Pat);
-//     ////////////////////////////////////////////////////////////
-
-//     //TESTE BUSCA
-
-//     char termos[250];
-//     // printf("Digite os termos de busca: \n");
-//     // scanf(" %[^\n]s", termos);
-//     strcpy(termos, "the travelling problems technologies include nanomagnetic and quantum");
-//     Doc reldoc[14];
-
-//     Busca_textos(Pat, termos, N, reldoc);
-//     printf("\nLista de Documentos:\n");
-//     for(int i = 0; i < N; i++){
-//         printf("\nID: %d, Relevancia: %.10lf\n", reldoc[i].IDDoc, reldoc[i].relevancia);
-//     }
-    
-// }
