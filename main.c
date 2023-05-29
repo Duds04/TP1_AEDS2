@@ -2,17 +2,30 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include "./headers/include.h"
 #include "./headers/leitura.h"
 
 
-GtkBuilder *builder;
-GtkWidget *window;
-GtkStack *stack;
+
+typedef struct Dados{
+    TipoArvore Pat;
+    char palavra[];
+
+
+}TDados;
+
+
+
+typedef struct Janelas{
+    GtkBuilder *builder;
+    GtkWidget *window;
+    GtkStack *stack;
+    TDados* interno;
+
+}TJanelas;
 
 
 void on_main_window_destroy(GtkWidget *widget, gpointer data){
-  gtk_main_quit();
+    gtk_main_quit();
 }
 
 void mensagem(char text[100], char secondary_text[200], char icon_name[100]){
@@ -29,74 +42,84 @@ void mensagem(char text[100], char secondary_text[200], char icon_name[100]){
 }
 
 void on_botao_inicio_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_opcao");
+    gtk_stack_set_visible_child_name(stack, "view_opcao");
 }
 
 void on_botao_sair_inicio_clicked(GtkWidget *widget, gpointer data){
-  gtk_main_quit();
+    gtk_main_quit();
 }
 void on_botao_sair_opcao_clicked(GtkWidget *widget, gpointer data){
-  gtk_main_quit();
+    gtk_main_quit();
 }
 
 void on_botao_ajuda_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_ajuda");
+    gtk_stack_set_visible_child_name(stack, "view_ajuda");
 }
 void on_botao_voltar_pesquisa_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_opcao");
+    gtk_stack_set_visible_child_name(stack, "view_opcao");
 }
 void on_botao_voltar_printar_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_opcao");
+    gtk_stack_set_visible_child_name(stack, "view_opcao");
 }
 void on_botao_voltar_ajuda_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_opcao");
+    gtk_stack_set_visible_child_name(stack, "view_opcao");
 }
 
 void on_botao_voltar_ajuda_ajuda1_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_ajuda");
+    gtk_stack_set_visible_child_name(stack, "view_ajuda");
 }
 void on_botao_voltar_ajuda_ajuda2_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_ajuda");
+    gtk_stack_set_visible_child_name(stack, "view_ajuda");
 }
 void on_botao_voltar_ajuda_ajuda3_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_ajuda");
+    gtk_stack_set_visible_child_name(stack, "view_ajuda");
 }
 void on_botao_voltar_ajuda_ajuda4_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_ajuda");
+    gtk_stack_set_visible_child_name(stack, "view_ajuda");
 }
 
 void on_botao_arquivos_ajuda_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "ajuda_arquivos");
+    gtk_stack_set_visible_child_name(stack, "ajuda_arquivos");
 }
 void on_botao_indice_ajuda_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "ajuda_index");
+    gtk_stack_set_visible_child_name(stack, "ajuda_index");
 }
 void on_botao_pesquisa_ajuda_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "ajuda_pesquisa");
+    gtk_stack_set_visible_child_name(stack, "ajuda_pesquisa");
 }
 void on_botao_printar_arvore_ajuda_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "ajuda_printar");
+    gtk_stack_set_visible_child_name(stack, "ajuda_printar");
 }
 
 
 
 
-void on_butao_arquivos_clicked(GtkWidget *widget, gpointer data){
-  //Receber os arquivos
-  mensagem("Operacao concluida!!", "Os arquivos foram inceridos com sucesso! ", "emblem-default");
+void on_butao_arquivos_clicked(GtkWidget *widget, gpointer data, TipoArvore Pat){
+    char caminho[20] = "./entradas/";
+    char arquivo[30];
+    
+
+    strcpy(arquivo, "listagemArquivos.txt");
+    strcat(caminho, arquivo);
+
+    leituraArquivo(caminho, &Pat);
+
+    mensagem("Operacao concluida!!", "Os arquivos foram inceridos com sucesso! ", "emblem-default");
 }
 
 void on_botao_indice_clicked(GtkWidget *widget, gpointer data){
   //Constroi os indices invertidos. O que é?
-  mensagem("Operacao concluida!!", "A construçao do indice invertida foi feita! ", "emblem-default");
+    mensagem("Operacao concluida!!", "A construçao do indice invertida foi feita! ", "emblem-default");
 }
 
 void on_botao_printar_arvore_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_printar");
+
+    gtk_stack_set_visible_child_name(stack, "view_printar");
+    MostraArvore(Pat);
 }
 
 void on_botao_pesquisa_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_pesquisa");
+    gtk_stack_set_visible_child_name(stack, "view_pesquisa");
 }
 
 
@@ -106,14 +129,20 @@ void on_botao_pesquisa_clicked(GtkWidget *widget, gpointer data){
 
 int main (int argc, char **argv){
 
-    gtk_init(&argc, &argv);
-    // char caminho[20] = "./entradas/";
-    // char arquivo[30];
+   
+    // fprintf(stderr, caminho);
+    
+    TJanelas janelas;
 
-    builder = gtk_builder_new_from_file("ui.glade");
+    janelas.interno->Pat = NULL;
+
+    gtk_init(&argc, &argv);
+    
+
+    janelas.builder = gtk_builder_new_from_file("ui.glade");
 
     gtk_builder_add_callback_symbols(
-        builder,
+        janelas.builder,
         "on_botao_inicio_clicked",                        G_CALLBACK(on_botao_inicio_clicked),
         "on_main_window_destroy",                         G_CALLBACK(on_main_window_destroy),
         "on_botao_sair_inicio_clicked",                   G_CALLBACK(on_botao_sair_inicio_clicked),
@@ -140,13 +169,13 @@ int main (int argc, char **argv){
     NULL);
 
 
-    gtk_builder_connect_signals(builder,NULL);
+    gtk_builder_connect_signals(janelas.builder,NULL);
 
 
-    stack =     GTK_WIDGET(gtk_builder_get_object(builder, "stack"));
-    window =    GTK_WIDGET(gtk_builder_get_object(builder, "main_window"));
+    janelas.stack =     GTK_WIDGET(gtk_builder_get_object(janelas.builder, "stack"));
+    janelas.window =    GTK_WIDGET(gtk_builder_get_object(janelas.builder, "main_window"));
 
-    gtk_widget_show_all(window);
+    gtk_widget_show_all(janelas.window);
     gtk_main();
     // TipoArvore Pat = NULL;
 
@@ -160,6 +189,10 @@ int main (int argc, char **argv){
     return 0;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// #include "./headers/leitura.h"
 // int main()
 // {
 //     char caminho[20] = "./entradas/";
@@ -198,7 +231,7 @@ int main (int argc, char **argv){
 //     for(int i = 0; i < 14; i++){
 //         printf("\nID: %d, Relevancia: %lf\n", reldoc[i].IDDoc, reldoc[i].relevancia);
 //     }
-    
+// }
 
 // gcc ./headers/include.h	 ./headers/ocorrencias.h	 ./headers/patricia.h	 ./headers/leitura.h	 ./arquivoC/ocorrencias.c	 ./arquivoC/patricia.c ./arquivoC/palavra.c ./headers/palavra.h	./arquivoC/leitura.c   main.c	 -o	 exec
 // 	./exec

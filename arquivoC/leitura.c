@@ -10,9 +10,10 @@ int leituraArquivo(char *pArquivo, TipoArvore* Pat)
     char caminho[70] = "./entradas/";
 
     if ((arquivo = fopen(pArquivo, "r")) != NULL)
-    {
+    {   
         while (fscanf(arquivo, "%s", guardaArquivo) != EOF)
-        {
+        {   
+            
             if (idDoc != 0)
             {
                 strcpy(caminho, "./entradas/");
