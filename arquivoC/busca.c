@@ -109,3 +109,11 @@ void separa_frase2(char* frase, int* n_palavras, char palavras[50][50]) {
     palavras[i][j] = '\0';
     *n_palavras = i + 1;  // Atualiza o número de palavras encontradas
 }
+
+void Imprime_RolDocs(Doc RelDocs[], int N_Doc){
+    int i;
+    for(i = 0; i < N_Doc; i++){
+        if(RelDocs[i].relevancia != 0)
+            printf("Documento %d (arquivo%d.txt)\n", RelDocs[i].IDDoc, RelDocs[i].IDDoc);
+    }
+}

@@ -24,7 +24,7 @@ int main()
 
     strcpy(arquivo, "listagemArquivos.txt");
     strcat(caminho, arquivo);
-    leituraArquivo(caminho, &Pat);
+    leituraArquivo(caminho, &Pat, 14);
     MostraArvore(Pat);
     ////////////////////////////////////////////////////////////
 
@@ -41,5 +41,6 @@ int main()
     for(int i = 0; i < 14; i++){
         printf("\nID: %d, Relevancia: %lf\n", reldoc[i].IDDoc, reldoc[i].relevancia);
     }
+    Imprime_RolDocs(reldoc, 14);
     
 }
