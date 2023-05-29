@@ -143,7 +143,7 @@ void on_botao_indice_clicked(GtkWidget *widget, gpointer data){
     mensagem("Operacao falhou", "Nao foi possivel fazer o indice invertido ", "emblem-default");
 }
 
-void Imprimir_OcorrenciaGTK(LOcorrencias* pLista, GtkTreeIter iter, char* palavra){
+void Imprimir_OcorrenciaGTK(LOcorrencias* pLista, GtkTreeIter iter){
 	POcorrencia pAux;
   char index[140] = "";
 
