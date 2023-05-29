@@ -2,7 +2,9 @@
     "files.associations": {
         "leitura.h": "c",
         "stdio.h": "c",
-        "unistd.h": "c"
-        "palavra.h": "c"
+        "unistd.h": "c",
+        "palavra.h": "c",
+        "include.h": "c",
+        "busca.h": "c"
     }
 }
