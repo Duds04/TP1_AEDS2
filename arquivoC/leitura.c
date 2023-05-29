@@ -7,7 +7,7 @@ int leituraArquivo(char *pArquivo, TipoArvore* Pat)
     int idDoc = 0;
     char guardaArquivo[50], guardaPalavra[200]; // vetor auxiliar para guardar palavra
     char c;
-    char caminho[70] = "./entradas/";
+    char caminho[70] = "../entradas/";
 
     if ((arquivo = fopen(pArquivo, "r")) != NULL)
     {
@@ -15,7 +15,7 @@ int leituraArquivo(char *pArquivo, TipoArvore* Pat)
         {
             if (idDoc != 0)
             {
-                strcpy(caminho, "./entradas/");
+                strcpy(caminho, "../entradas/");
                 strcat(caminho, guardaArquivo);
                 if ((arquivoInterno = fopen(caminho, "r")) != NULL)
                 {
@@ -25,7 +25,7 @@ int leituraArquivo(char *pArquivo, TipoArvore* Pat)
                     }
                 }
                 else
-                {
+                {   
                     fprintf(stderr, "Erro ao abrir o arquivo");
                     return 0;
                 }

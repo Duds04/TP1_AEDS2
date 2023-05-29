@@ -9,6 +9,7 @@
 GtkBuilder *builder;
 GtkWidget *window;
 GtkStack *stack;
+TipoArvore Pat;
 
 
 void on_main_window_destroy(GtkWidget *widget, gpointer data){
@@ -83,7 +84,19 @@ void on_botao_printar_arvore_ajuda_clicked(GtkWidget *widget, gpointer data){
 
 void on_butao_arquivos_clicked(GtkWidget *widget, gpointer data){
   //Receber os arquivos
-  mensagem("Operacao concluida!!", "Os arquivos foram inceridos com sucesso! ", "emblem-default");
+  int erro;
+  char caminho[20] = "../entradas/";
+  char arquivo[30];
+  Pat = NULL;
+
+  strcpy(arquivo, "listagemArquivos.txt");
+  strcat(caminho, arquivo);
+
+  erro = leituraArquivo(caminho,&Pat);
+  if (erro)
+    mensagem("Operacao concluida!!", "Os arquivos foram inceridos com sucesso! ", "emblem-default");
+  else
+    mensagem("Operacao falhou", "Os arquivos nao foram recebidos ", "emblem-default");
 }
 
 void on_botao_indice_clicked(GtkWidget *widget, gpointer data){
@@ -92,10 +105,22 @@ void on_botao_indice_clicked(GtkWidget *widget, gpointer data){
 }
 
 void on_botao_printar_arvore_clicked(GtkWidget *widget, gpointer data){
+  MostraArvore(Pat);
   gtk_stack_set_visible_child_name(stack, "view_printar");
 }
 
 void on_botao_pesquisa_clicked(GtkWidget *widget, gpointer data){
+
+  // char termos[250];
+
+  // strcpy(termos, "the travelling problems technologies include nanomagnetic and quantum");
+  // Doc reldoc[14];
+
+  // Busca_textos(Pat, termos, 3, reldoc);
+
+  // for(int i = 0; i < 14; i++){
+  //     printf("\nID: %d, Relevancia: %lf\n", reldoc[i].IDDoc, reldoc[i].relevancia);
+  // }
   gtk_stack_set_visible_child_name(stack, "view_pesquisa");
 }
 
@@ -107,8 +132,7 @@ void on_botao_pesquisa_clicked(GtkWidget *widget, gpointer data){
 int main (int argc, char **argv){
 
     gtk_init(&argc, &argv);
-    // char caminho[20] = "./entradas/";
-    // char arquivo[30];
+    
 
     builder = gtk_builder_new_from_file("ui.glade");
 
@@ -185,19 +209,19 @@ int main (int argc, char **argv){
 //     MostraArvore(Pat);
 //     ////////////////////////////////////////////////////////////
 
-//     //TESTE BUSCA
+    //TESTE BUSCA
 
-//     char termos[250];
-//     // printf("Digite os termos de busca: \n");
-//     // scanf(" %[^\n]s", termos);
-//     strcpy(termos, "the travelling problems technologies include nanomagnetic and quantum");
-//     Doc reldoc[14];
+    // char termos[250];
+    // // printf("Digite os termos de busca: \n");
+    // // scanf(" %[^\n]s", termos);
+    // strcpy(termos, "the travelling problems technologies include nanomagnetic and quantum");
+    // Doc reldoc[14];
 
-//     Busca_textos(Pat, termos, 14, reldoc);
+    // Busca_textos(Pat, termos, 14, reldoc);
 
-//     for(int i = 0; i < 14; i++){
-//         printf("\nID: %d, Relevancia: %lf\n", reldoc[i].IDDoc, reldoc[i].relevancia);
-//     }
+    // for(int i = 0; i < 14; i++){
+    //     printf("\nID: %d, Relevancia: %lf\n", reldoc[i].IDDoc, reldoc[i].relevancia);
+    // }
     
 
 // gcc ./headers/include.h	 ./headers/ocorrencias.h	 ./headers/patricia.h	 ./headers/leitura.h	 ./arquivoC/ocorrencias.c	 ./arquivoC/patricia.c ./arquivoC/palavra.c ./headers/palavra.h	./arquivoC/leitura.c   main.c	 -o	 exec
