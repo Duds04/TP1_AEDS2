@@ -1,0 +1,38 @@
+[
+  {
+    "directory": "/home/arthur/Codes/TP1_AEDS2/build",
+    "command": "cc -Idemo.p -I. -I.. -I../arquivoC -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/x86_64-linux-gnu -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread -MD -MQ demo.p/main.c.o -MF demo.p/main.c.o.d -o demo.p/main.c.o -c ../main.c",
+    "file": "../main.c",
+    "output": "demo.p/main.c.o"
+  },
+  {
+    "directory": "/home/arthur/Codes/TP1_AEDS2/build",
+    "command": "cc -Idemo.p -I. -I.. -I../arquivoC -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/x86_64-linux-gnu -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread -MD -MQ demo.p/arquivoC_ocorrencias.c.o -MF demo.p/arquivoC_ocorrencias.c.o.d -o demo.p/arquivoC_ocorrencias.c.o -c ../arquivoC/ocorrencias.c",
+    "file": "../arquivoC/ocorrencias.c",
+    "output": "demo.p/arquivoC_ocorrencias.c.o"
+  },
+  {
+    "directory": "/home/arthur/Codes/TP1_AEDS2/build",
+    "command": "cc -Idemo.p -I. -I.. -I../arquivoC -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/x86_64-linux-gnu -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread -MD -MQ demo.p/arquivoC_patricia.c.o -MF demo.p/arquivoC_patricia.c.o.d -o demo.p/arquivoC_patricia.c.o -c ../arquivoC/patricia.c",
+    "file": "../arquivoC/patricia.c",
+    "output": "demo.p/arquivoC_patricia.c.o"
+  },
+  {
+    "directory": "/home/arthur/Codes/TP1_AEDS2/build",
+    "command": "cc -Idemo.p -I. -I.. -I../arquivoC -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/x86_64-linux-gnu -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread -MD -MQ demo.p/arquivoC_leitura.c.o -MF demo.p/arquivoC_leitura.c.o.d -o demo.p/arquivoC_leitura.c.o -c ../arquivoC/leitura.c",
+    "file": "../arquivoC/leitura.c",
+    "output": "demo.p/arquivoC_leitura.c.o"
+  },
+  {
+    "directory": "/home/arthur/Codes/TP1_AEDS2/build",
+    "command": "cc -Idemo.p -I. -I.. -I../arquivoC -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/x86_64-linux-gnu -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread -MD -MQ demo.p/arquivoC_palavra.c.o -MF demo.p/arquivoC_palavra.c.o.d -o demo.p/arquivoC_palavra.c.o -c ../arquivoC/palavra.c",
+    "file": "../arquivoC/palavra.c",
+    "output": "demo.p/arquivoC_palavra.c.o"
+  },
+  {
+    "directory": "/home/arthur/Codes/TP1_AEDS2/build",
+    "command": "cc -Idemo.p -I. -I.. -I../arquivoC -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/x86_64-linux-gnu -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread -MD -MQ demo.p/arquivoC_busca.c.o -MF demo.p/arquivoC_busca.c.o.d -o demo.p/arquivoC_busca.c.o -c ../arquivoC/busca.c",
+    "file": "../arquivoC/busca.c",
+    "output": "demo.p/arquivoC_busca.c.o"
+  }
+]
