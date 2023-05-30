@@ -1,3 +1,8 @@
+//ARTHUR ATAIDE DE MELO SARAIVA - 5070
+//MARIA EDUARDA DE PINHO BRAGA - 5099 
+//JOÃO GABRIEL ANGELO BRADACHI - 5078
+//ESDRAS ARAUJO FERREIRA - 5102
+
 #include "./headers/leitura.h"
 
 
@@ -52,9 +57,7 @@ void on_botao_voltar_ajuda_clicked(GtkWidget *widget, gpointer data){
 void on_botao_voltar_mandar_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_opcao");
 }
-void on_botao_voltar_relevancia_clicked(GtkWidget *widget, gpointer data){
-  gtk_stack_set_visible_child_name(stack, "view_opcao");
-}
+
 
 void on_botao_ajuda_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_ajuda");
@@ -90,6 +93,9 @@ void on_botao_pesquisa_clicked(GtkWidget *widget, gpointer data){
 }
 void on_butao_arquivos_clicked(GtkWidget *widget, gpointer data){
   gtk_stack_set_visible_child_name(stack, "view_arquivo");
+}
+void on_botao_voltar_relevancia_clicked(GtkWidget *widget, gpointer data){
+  gtk_stack_set_visible_child_name(stack, "view_pesquisa");
 }
 
 void on_botao_mandar_clicked(GtkWidget *widget, gpointer data){

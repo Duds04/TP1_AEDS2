@@ -1,3 +1,8 @@
+//ARTHUR ATAIDE DE MELO SARAIVA - 5070
+//MARIA EDUARDA DE PINHO BRAGA - 5099 
+//JOÃO GABRIEL ANGELO BRADACHI - 5078
+//ESDRAS ARAUJO FERREIRA - 5102
+
 #include "../headers/busca.h"
 
 // usando o metodo shellsort para ordenar o vetor (escolha com base nas poucas quantidades de elementos)

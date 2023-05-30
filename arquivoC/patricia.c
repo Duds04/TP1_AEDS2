@@ -1,3 +1,8 @@
+//ARTHUR ATAIDE DE MELO SARAIVA - 5070
+//MARIA EDUARDA DE PINHO BRAGA - 5099 
+//JOÃO GABRIEL ANGELO BRADACHI - 5078
+//ESDRAS ARAUJO FERREIRA - 5102
+
 #include "../headers/patricia.h"
 
 TipoDib Bit(TipoIndexAmp i, char k[50]){
@@ -51,7 +56,6 @@ TipoArvore Pesquisa (char k[50], TipoArvore t){
             return t;
         }
         else{
-            printf("Elemento não encontrado\n");
             return NULL;
         }
     }
